@@ -3,10 +3,7 @@ import "/styles/globals.css";
 
 export default function Home() {
   return (
-    <div className="flex items-center justify-center min-h-screen bg-slate-950 p-10">
-      
-        
-      
+    <div className="flex items-center justify-center min-h-screen bg-slate-950 px-4">
       <div className="border-2 border-slate-50 max-w-lg w-full rounded-2xl overflow-hidden shadow-lg py-6 px-10 flex flex-col items-center">
         {/* Company Logo */}
       <img 
