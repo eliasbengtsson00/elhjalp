@@ -3,11 +3,11 @@ import "/styles/globals.css";
 
 export default function Home() {
   return (
-    <div className="flex items-center justify-center min-h-screen bg-slate-950 p-4">
+    <div className="flex items-center justify-center min-h-screen bg-slate-950 p-10">
       
         
       
-      <div className="border-2 border-slate-50 max-w-lg w-full rounded-2xl overflow-hidden shadow-lg p-6 flex flex-col items-center">
+      <div className="border-2 border-slate-50 max-w-lg w-full rounded-2xl overflow-hidden shadow-lg py-6 px-10 flex flex-col items-center">
         {/* Company Logo */}
       <img 
         className=""
@@ -25,7 +25,7 @@ export default function Home() {
         <div className="text-center">
           <h1 className="font-bold text-4xl text-slate-50 pb-2">Philip Falk</h1>
           <h2 className="text-gray-400 text-sm">Auktoriserad elektriker</h2>
-          <p className="text-gray-200 text-sm py-10 px-20">Elinstallationer för företag och privatpersoner. Blah blah blah blah blah</p>
+          <p className="text-gray-200 text-sm py-10">Elinstallationer för företag och privatpersoner.</p>
         </div>
 
         {/* Call to Action Buttons */}
