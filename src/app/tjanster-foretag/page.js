@@ -30,15 +30,18 @@ export default function ForetagPage() {
       </div>
 
       {/* 3. The "Business Partner" Block */}
-      <section className="mt-20 p-10 md:p-16 bg-zinc-900/50 border border-zinc-800 rounded-[2.5rem] flex flex-col md:flex-row items-center gap-12">
+      <section className="mt-20 p-10 md:p-16 bg-zinc-900/50 border border-zinc-800 rounded-[2.5rem] flex flex-col md:flex-row items-start md:items-center gap-12">
         <div className="flex-1">
-          <h2 className="text-2xl mb-4">Ramavtal & Serviceavtal</h2>
-          <p className="text-sm md:text-base text-muted-text mb-6">
+          <h2 className="text-2xl mb-4 tracking-tight">
+            Ramavtal & Serviceavtal
+          </h2>
+          <p className="text-sm md:text-base text-muted-text mb-8 max-w-xl leading-relaxed">
             Många av våra företagskunder väljer att teckna serviceavtal för att
             säkerställa snabb inställelsetid och regelbundet underhåll. Det
             minimerar risken för driftstopp och ger en förutsägbar elkostnad.
           </p>
-          <div className="flex gap-4">
+
+          <div className="flex flex-wrap gap-4 mb-4 md:mb-0">
             <div className="px-4 py-2 bg-white/5 border border-white/10 rounded-full text-[10px] uppercase tracking-widest text-white">
               Fastighetsbolag
             </div>
@@ -48,10 +51,10 @@ export default function ForetagPage() {
           </div>
         </div>
 
-        <div className="w-full md:w-auto">
+        <div className="w-full md:w-auto self-center md:self-auto">
           <Link
             href="/kontakt"
-            className="flex items-center justify-center gap-4 bg-white text-black px-10 py-5 rounded-full text-xs uppercase tracking-widest hover:bg-zinc-200 transition duration-300"
+            className="flex items-center justify-center gap-4 bg-white text-black px-10 py-5 rounded-full text-xs uppercase tracking-widest hover:bg-zinc-200 transition duration-300 whitespace-nowrap"
           >
             Boka konsultation
           </Link>

@@ -1,5 +1,6 @@
 import "./globals.css";
 import { Zalando_Sans_Expanded } from "next/font/google";
+import { GoogleTagManager } from '@next/third-parties/google';
 import Theme from "@/components/providers/Theme";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
@@ -31,6 +32,7 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="sv" suppressHydrationWarning className={zalando.variable}>
+      <GoogleTagManager gtmId={process.env.NEXT_PUBLIC_GTM_ID} />
       <head>
         <script
           dangerouslySetInnerHTML={{

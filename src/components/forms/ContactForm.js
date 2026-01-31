@@ -1,11 +1,23 @@
 "use client";
 
-import React, { useActionState } from "react";
+import React, { useActionState, useEffect } from "react";
 import { SendDiagonal, Check } from "iconoir-react";
 import { sendEmail } from "@/lib/actions";
+import { sendGTMEvent } from "@next/third-parties/google";
 
 export default function ContactForm() {
   const [state, formAction, isPending] = useActionState(sendEmail, null);
+
+  // Trigger tracking when state becomes success
+  useEffect(() => {
+    if (state?.success) {
+      sendGTMEvent({
+        event: "form_success",
+        value: "lead_form_electrical",
+        page_location: window.location.pathname,
+      });
+    }
+  }, [state?.success]);
 
   // Success State View
   if (state?.success) {
