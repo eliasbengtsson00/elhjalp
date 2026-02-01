@@ -36,6 +36,7 @@ export default function ContactForm() {
 
   return (
     <form action={formAction} className="flex flex-col gap-6">
+      <input type="hidden" name="page_url" value={typeof window !== 'undefined' ? window.location.pathname : ''} />
       <input
         type="text"
         name="_gotcha"
@@ -48,7 +49,7 @@ export default function ContactForm() {
         {/* Name Field */}
         <div className="flex flex-col gap-2">
           <input
-            name="name" // Added name
+            name="name"
             type="text"
             placeholder="Namn *"
             required
@@ -59,7 +60,7 @@ export default function ContactForm() {
         {/* Phone number Field */}
         <div className="flex flex-col gap-2">
           <input
-            name="phone" // Added name
+            name="phone"
             type="tel"
             placeholder="Telefon"
             className="bg-background border border-border-subtle rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-foreground/50 transition-colors"
@@ -70,7 +71,7 @@ export default function ContactForm() {
       {/* Email Field */}
       <div className="flex flex-col gap-2">
         <input
-          name="email" // Added name
+          name="email"
           type="email"
           placeholder="E-post *"
           required
@@ -81,7 +82,7 @@ export default function ContactForm() {
       {/* Message Field */}
       <div className="flex flex-col gap-2">
         <textarea
-          name="message" // Added name
+          name="message"
           rows="4"
           required
           placeholder="Beskriv ditt ärende... *"
