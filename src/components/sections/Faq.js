@@ -5,7 +5,7 @@ import { Plus, Minus } from "iconoir-react";
 const FAQ_DATA = [
   {
     q: "Hur snabbt kan en elektriker komma i Borås?",
-    a: "Vi strävar efter att erbjuda hjälp inom 24-48 timmar för mindre servicearbeten. Vid akuta ärenden försöker vi prioritera besöket samma dag."
+    a: "Vi strävar efter att erbjuda hjälp inom 24-48 timmar för mindre servicearbeten. Vid akuta ärenden, kontakta oss så gör vi vårt bästa för att hitta en lösning."
   },
   {
     q: "Vad kostar det att anlita en elektriker?",

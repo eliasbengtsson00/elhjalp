@@ -13,8 +13,7 @@ export default function Hero() {
             </span>
           </h1>
           <p className="mt-10 text-sm md:text-base text-muted-text max-w-lg">
-            Säkra installationer för privatpersoner och företag i Sjuhärad
-            med omnejd. Kontakta oss för en kostnadsfri offert!
+            Din auktoriserade och kompletta elektriker i Västsverige. Installation, service och felsökning.
           </p>
           <div className="mt-10">
             <a
