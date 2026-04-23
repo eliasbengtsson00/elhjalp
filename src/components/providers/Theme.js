@@ -9,7 +9,11 @@ const ThemeContext = createContext();
 
 export default function Theme({ children }) {
   return (
-    <NextThemesProvider attribute="class" defaultTheme="system" enableSystem>
+    <NextThemesProvider 
+      attribute="class" 
+      defaultTheme="dark" 
+      enableSystem={false}
+    >
       <ThemeWrapper>{children}</ThemeWrapper>
     </NextThemesProvider>
   );
