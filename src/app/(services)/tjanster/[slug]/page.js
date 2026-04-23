@@ -2,7 +2,19 @@ import { SERVICES } from "@/lib/services";
 import { notFound } from "next/navigation";
 import ServiceCard from "@/components/ui/ServiceCard";
 import Link from "next/link";
-import { ArrowUpLeft, ArrowUpRight } from "iconoir-react";
+import { ArrowUpLeft } from "iconoir-react";
+
+export async function generateMetadata({ params }) {
+  const { slug } = await params;
+  const service = SERVICES.find((s) => s.slug === slug);
+
+  if (!service) return { title: "Tjänst hittades inte" };
+
+  return {
+    title: `${service.title} | Elhjälp`,
+    description: service.seoDescription,
+  };
+}
 
 export default async function ServicePage({ params }) {
   const { slug } = await params;

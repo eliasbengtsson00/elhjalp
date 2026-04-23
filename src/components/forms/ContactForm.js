@@ -9,7 +9,6 @@ import { sendGTMEvent } from "@next/third-parties/google";
 export default function ContactForm() {
   const [state, formAction, isPending] = useActionState(sendEmail, null);
 
-  // Trigger tracking when state becomes success
   useEffect(() => {
     if (state?.success) {
       sendGTMEvent({

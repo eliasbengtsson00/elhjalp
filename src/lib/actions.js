@@ -1,25 +1,31 @@
 "use server";
 import { Resend } from "resend";
+import { z } from "zod";
+
+const ContactSchema = z.object({
+  name: z.string().min(2, "Namn krävs (minst 2 tecken)."),
+  email: z.string().email("Ogiltig e-postadress."),
+  phone: z.string().optional(),
+  message: z.string().min(10, "Meddelandet måste vara minst 10 tecken."),
+  page_url: z.string().optional(),
+  _gotcha: z.string().optional(),
+});
 
 const resend = new Resend(process.env.RESEND_API_KEY);
 
 export async function sendEmail(prevState, formData) {
-  const gotcha = formData.get("_gotcha");
+  const data = Object.fromEntries(formData);
 
-  // Silent exit for bots
-  if (gotcha) {
-    return { success: true };
+  const validated = ContactSchema.safeParse(data);
+
+  if (!validated.success) {
+    return { error: validated.error.errors[0].message };
   }
 
-  const name = formData.get("name")?.toString() || "";
-  const phone = formData.get("phone")?.toString() || "";
-  const email = formData.get("email")?.toString() || "";
-  const message = formData.get("message")?.toString() || "";
-  const pageUrl = formData.get("page_url")?.toString() || "Okänd sida";
+  const { name, email, phone, message, page_url: pageUrl } = validated.data;
 
-  // Basic validation
-  if (!name || !email || !message) {
-    return { error: "Vänligen fyll i alla obligatoriska fält (*)." };
+  if (data._gotcha) {
+    return { success: true };
   }
 
   try {
