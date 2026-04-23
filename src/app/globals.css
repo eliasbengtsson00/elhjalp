@@ -11,6 +11,11 @@
   --transition-delay-theme: 500ms;
 }
 
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 5rem; 
+}
+
 :root {
   --bg: oklch(14.1% 0.005 285.823);
   --fg: #ffffff;

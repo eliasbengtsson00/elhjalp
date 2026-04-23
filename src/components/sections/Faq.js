@@ -20,49 +20,58 @@ const FAQ_DATA = [
 export default function Faq() {
   const [openIndex, setOpenIndex] = useState(null);
 
-  const faqSchema = {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    "mainEntity": FAQ_DATA.map((item) => ({
-      "@type": "Question",
-      "name": item.q,
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": item.a
-      }
-    }))
-  };
-
   return (
-    <section className="py-15">
-        <script
+    <section className="py-12">
+      <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+        dangerouslySetInnerHTML={{ 
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            "mainEntity": FAQ_DATA.map((item) => ({
+              "@type": "Question",
+              "name": item.q,
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": item.a
+              }
+            }))
+          }) 
+        }}
       />
+      
       <div className="max-w-7xl mx-auto md:px-12 px-6">
-        <h2 className="text-[10px] uppercase tracking-[0.3em] text-zinc-500 mb-8">
+        <h2 className="text-lg md:text-xl font-light text-white leading-relaxed">
           Vanliga frågor
         </h2>
         
-        <div className="space-y-0">
+        <div>
           {FAQ_DATA.map((item, i) => (
-            <div key={i} className="border-b border-zinc-800/60 overflow-hidden">
+            <div key={i} className="overflow-hidden">
               <button
                 onClick={() => setOpenIndex(openIndex === i ? null : i)}
-                className="w-full py-8 flex justify-between items-center text-left hover:text-zinc-300 transition-colors group cursor-pointer"
+                className="w-full gap-x-4 py-8 flex justify-between items-center text-left text-muted-text hover:text-white transition-colors duration-200 group cursor-pointer outline-none"
               >
-                <span className="text-sm md:text-base font-light tracking-tight">
+                <span className="text-base font-light">
                   {item.q}
                 </span>
-                {openIndex === i ? <Minus className="w-4 h-4 text-zinc-500" /> : <Plus className="w-4 h-4 text-zinc-600 group-hover:text-zinc-400" />}
+                {openIndex === i ? (
+                  <Minus className="w-6 h-6 text-muted-text group-hover:text-white" />
+                ) : (
+                  <Plus className="w-6 h-6 text-muted-text group-hover:text-white" />
+                )}
               </button>
               
               <div 
-                className={`transition-all duration-500 ease-in-out ${openIndex === i ? 'max-h-40 opacity-100 mb-8' : 'max-h-0 opacity-0'}`}
+                className={`grid transition-all duration-200 ease-in-out ${
+                  openIndex === i ? 'grid-rows-[1fr] opacity-100 mb-8' : 'grid-rows-[0fr] opacity-0'
+                }`}
               >
-                <p className="text-sm text-zinc-500 leading-relaxed max-w-2xl">
-                  {item.a}
-                </p>
+                <div className="overflow-hidden">
+                  <p className="text-base font-light text-zinc-500 max-w-2xl">
+                    {item.a}
+                  </p>
+                </div>
               </div>
             </div>
           ))}

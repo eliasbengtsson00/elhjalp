@@ -1,36 +1,50 @@
-import { PhoneSolid } from "iconoir-react";
-import ContactForm from "@/components/forms/ContactForm";
+"use client";
+
+import { PageEdit, ArrowDown } from "iconoir-react";
 
 export default function Hero() {
-  return (
-    <section className="px-6 py-12 md:px-12 max-w-7xl mx-auto">
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
-        <div className="flex flex-col text-left">
-          <h1 className="text-4xl">
-            Auktoriserad Elektriker i Borås <br />
-            <span className="text-sm text-muted-text">
-              För service och elinstallationer
-            </span>
-          </h1>
-          <p className="mt-10 text-sm md:text-base text-muted-text max-w-lg">
-            Din auktoriserade och kompletta elektriker i Västsverige. Installation, service och felsökning.
-          </p>
-          <div className="mt-10">
-            <a
-              href="tel:+123456789"
-              className="flex items-center gap-4 border-green-900 border rounded-full px-8 py-4 text-xs uppercase tracking-widest hover:bg-green-900 hover:text-white transition duration-300 w-fit"
-            >
-              <PhoneSolid width={18} height={18} />
-              <span>Ring direkt</span>
-            </a>
-          </div>
-        </div>
+  const scrollToSection = (e, id) => {
+    e.preventDefault();
+    const element = document.getElementById(id);
+    if (element) {
+      element.scrollIntoView({ behavior: "smooth" });
+      window.history.pushState(null, null, `#${id}`);
+    }
+  };
 
-        <div id="contact-form" className="bg-zinc-900/50 border border-zinc-800 rounded-3xl p-6 md:p-10">
-          <h2 className="text-lg mb-8 uppercase tracking-tighter">
-            Skicka ett meddelande
-          </h2>
-          <ContactForm />
+  return (
+    <section className="px-6 md:px-12 py-24 md:py-32 max-w-7xl mx-auto">
+      <div className="flex flex-col">
+        <h1 className="text-4xl md:text-6xl max-w-3xl leading-[1.2]">
+          Auktoriserad Elektriker i Borås
+        </h1>
+
+        <p className="mt-8 text-muted-text text-base md:text-lg font-light leading-relaxed max-w-lg">
+          Din auktoriserade och kompletta elektriker i Västsverige.
+          Installation, service och felsökning för privatpersoner och företag.
+        </p>
+
+        {/* Buttons */}
+        <div className="mt-20 flex flex-col sm:flex-row items-start sm:items-center gap-6">
+          {/* Primary */}
+          <a
+            href="#contact"
+            onClick={(e) => scrollToSection(e, "contact")}
+            className="group flex items-center gap-4 border border-white bg-white text-zinc-900 px-7 py-4 rounded-full transition-all duration-200 hover:scale-105 active:scale-95"
+          >
+            <PageEdit width={20} height={20} strokeWidth={1} />
+            <span className="text-base font-light">Få kostnadsfri offert</span>
+          </a>
+
+          {/* Secondary */}
+          <a
+            href="#services"
+            onClick={(e) => scrollToSection(e, "services")}
+            className="group flex items-center gap-4 border border-white text-white px-7 py-4 rounded-full transition-all duration-200 hover:scale-105 active:scale-95"
+          >
+            <ArrowDown width={20} height={20} strokeWidth={1} />
+            <span className="text-base font-light">Se våra tjänster</span>
+          </a>
         </div>
       </div>
     </section>

@@ -1,94 +1,52 @@
 import { SERVICES } from "@/lib/services";
 import { notFound } from "next/navigation";
-import ContactForm from "@/components/forms/ContactForm"; // Assuming this is your form path
 import ServiceCard from "@/components/ui/ServiceCard";
-import { PhoneSolid } from "iconoir-react";
-
-export async function generateStaticParams() {
-  return SERVICES.map((service) => ({ slug: service.slug }));
-}
-
-export async function generateMetadata({ params }) {
-  const { slug } = await params;
-  const service = SERVICES.find((s) => s.slug === slug);
-  if (!service) return { title: "Tjänst hittades ej" };
-  return {
-    title: `${service.title} | Elhjälp Sverige AB`,
-    description: service.description,
-  };
-}
+import Link from "next/link";
+import { ArrowUpLeft, ArrowUpRight } from "iconoir-react";
 
 export default async function ServicePage({ params }) {
   const { slug } = await params;
   const service = SERVICES.find((s) => s.slug === slug);
   if (!service) notFound();
 
-  // Filter for 2-3 other services in the same category
   const relatedServices = SERVICES.filter(
     (s) => s.category === service.category && s.slug !== slug,
-  ).slice(0, 3);
+  ).slice(0, 2);
 
   return (
-    <main className="pt-30 pb-20 max-w-7xl mx-auto px-6 md:px-12">
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20">
-        {/* LEFT COLUMN: Content (8 cols) */}
-        <div className="">
-          <span className="text-[10px] uppercase tracking-[0.2em] text-muted-text border border-border-subtle px-4 py-2 rounded-full">
-            Tjänster /{" "}
-            {service.category === "privat" ? "Privatperson" : "Företag"}
-          </span>
+    <main className="px-6 md:px-12 py-24 md:py-32 max-w-7xl mx-auto">
+      <h1 className="text-4xl font-light leading-[1.2]">{service.title}</h1>
 
-          <h1 className="text-4xl mt-12 mb-6">
-            {service.title}
-          </h1>
+      <div className="w-fit max-w-2xl mt-8">
+        <p className="text-muted-text text-base md:text-lg font-light leading-relaxed max-w-2xl">
+          {service.content}
+        </p>
+      </div>
 
-          <p className="text-sm text-muted-text mb-20">
-            {service.description}
-          </p>
+      {/* Related Services & View All */}
+      <section className="mt-32 pt-16 border-t borderb border-zinc-900">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          {/* The 2 Related Service Cards */}
+          {relatedServices.map((s) => (
+            <ServiceCard key={s.slug} {...s} />
+          ))}
 
-          <div className="prose prose-invert max-w-none border-t border-border-subtle pt-8 text-zinc-400">
-            <div className="whitespace-pre-wrap">
-              {service.content}
-            </div>
-          </div>
-        </div>
-
-        {/* RIGHT COLUMN: Contact Sidebar */}
-
-          <div className="sticky top-32 space-y-6">
-            <div className="bg-zinc-900/50 border border-zinc-800 rounded-3xl p-6 md:p-10">
-              <h2 className="text-lg mb-8 uppercase tracking-tighter">
-                {service.category === "foretag"
-                  ? "Offertförfrågan"
-                  : `Boka ${service.title}`}
-              </h2>
-              <ContactForm />
+          <Link
+            href="/tjanster"
+            className="group flex flex-col items-center justify-center p-8 min-h-[300px] rounded-4xl border border-zinc-900 bg-zinc-950/20 transition-all duration-300 hover:border-zinc-800 hover:bg-zinc-900/50"
+          >
+            {/* The Icon Circle */}
+            <div className="mb-4 flex items-center justify-center w-10 h-10 rounded-full border border-zinc-900 text-zinc-600 transition-all duration-300 group-hover:border-zinc-700 group-hover:text-zinc-400 group-hover:-rotate-45">
+              <ArrowUpLeft strokeWidth={1.5} className="w-5 h-5" />
             </div>
 
-            <a
-              href="tel:+46723071194"
-              className="flex items-center justify-center gap-4 border-green-900/30 border bg-green-900/10 rounded-2xl p-6 text-sm uppercase tracking-widest hover:bg-green-900 hover:text-white transition duration-300"
-            >
-              <PhoneSolid width={20} height={20} className="text-green-500" />
-              <span>Ring för snabb hjälp</span>
-            </a>
-          </div>
+            {/* The Label */}
+            <span className="text-zinc-700 text-base font-light tracking-wide group-hover:text-zinc-500 transition-colors duration-300">
+              Visa alla tjänster
+            </span>
+          </Link>
         </div>
-
-
-      {/* RELATED SERVICES: Footer of the page */}
-      {relatedServices.length > 0 && (
-        <section className="mt-20 pt-20 border-t border-border-subtle">
-          <h2 className="text-xl mb-10">
-            Fler tjänster inom {service.category}
-          </h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {relatedServices.map((s) => (
-              <ServiceCard key={s.slug} {...s} />
-            ))}
-          </div>
-        </section>
-      )}
+      </section>
     </main>
   );
 }

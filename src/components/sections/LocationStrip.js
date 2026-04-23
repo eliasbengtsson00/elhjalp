@@ -1,24 +1,36 @@
 export default function LocationStrip() {
   const areas = [
-    "Borås", "Sjuhärad", "Fristad", "Viskafors", 
-    "Dalsjöfors", "Sandared", "Bollebygd", "Ulricehamn"
+    "Borås",
+    "Göteborg",
+    "Alingsås",
+    "Ulricehamn",
+    "Lerum",
+    "Partille",
+    "Landvetter",
+    "Härryda",
+    "Kinna",
+    "Skene",
+    "Vårgårda",
+    "Herrljunga",
+    "Bollebygd",
+    "Tranemo",
+    "Svenljunga",
   ];
 
   return (
-    <section className="py-20">
-      <div className="max-w-7xl mx-auto px-6 md:px-12">
+    <section className="py-12">
+      <div className="max-w-7xl mx-auto md:px-12 px-6">
         <div className="flex flex-col gap-8 md:gap-10">
-          {/* Subtle Label */}
-          <h2 className="text-[10px] uppercase tracking-[0.3em] text-zinc-500 whitespace-nowrap">
+
+          <h2 className="text-lg md:text-xl font-light text-white leading-relaxed">
             Verksamma områden
           </h2>
-          
-          {/* Minimalist List */}
-          <div className="flex flex-wrap gap-x-6 gap-y-3">
+
+          <div className="flex flex-wrap gap-x-6 gap-y-6">
             {areas.map((area) => (
-              <span 
-                key={area} 
-                className="text-[11px] md:text-xs text-zinc-400 hover:text-white transition-colors duration-300 cursor-default"
+              <span
+                key={area}
+                className="text-base font-light leading-relaxed text-muted-text hover:text-white transition-colors duration-200 cursor-default"
               >
                 {area}
               </span>

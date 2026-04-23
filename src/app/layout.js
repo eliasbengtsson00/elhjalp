@@ -29,18 +29,28 @@ export const metadata = {
   },
 }
 
+export const viewport = {
+  themeColor: [
+    { media: '(prefers-color-scheme: light)', color: '#ffffff' },
+    { media: '(prefers-color-scheme: dark)', color: '#09090b' },
+  ],
+};
+
 export default function RootLayout({ children }) {
   return (
     <html lang="sv" suppressHydrationWarning className={zalando.variable}>
-      <GoogleTagManager gtmId={process.env.NEXT_PUBLIC_GTM_ID} />
       <head>
+        {/* 1. GTM is now inside head */}
+        <GoogleTagManager gtmId={process.env.NEXT_PUBLIC_GTM_ID} />
+        
+        {/* 2. Theme script is now inside head */}
         <script
           dangerouslySetInnerHTML={{
             __html: `
-      if (localStorage.getItem('theme') === 'light') {
-        document.documentElement.classList.add('light');
-      }
-    `,
+              if (localStorage.getItem('theme') === 'light') {
+                document.documentElement.classList.add('light');
+              }
+            `,
           }}
         />
       </head>

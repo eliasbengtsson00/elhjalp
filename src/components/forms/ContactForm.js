@@ -3,6 +3,7 @@
 import React, { useActionState, useEffect } from "react";
 import { SendDiagonal, Check } from "iconoir-react";
 import { sendEmail } from "@/lib/actions";
+import { ArrowUpRight } from "iconoir-react";
 import { sendGTMEvent } from "@next/third-parties/google";
 
 export default function ContactForm() {
@@ -35,7 +36,7 @@ export default function ContactForm() {
   }
 
   return (
-    <form action={formAction} className="flex flex-col gap-6">
+    <form action={formAction} className="flex flex-col gap-6 font-light">
       <input type="hidden" name="page_url" value={typeof window !== 'undefined' ? window.location.pathname : ''} />
       <input
         type="text"
@@ -98,10 +99,10 @@ export default function ContactForm() {
       <button
         type="submit"
         disabled={isPending}
-        className="mt-2 flex items-center justify-center gap-3 bg-foreground text-background py-4 rounded-full text-sm hover:opacity-90 transition-all cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed"
+        className="group flex items-center justify-center gap-4 border border-white bg-white text-zinc-900 px-7 py-4 rounded-full transition-all duration-200 ease-in-out hover:scale-105 active:scale-95"
       >
-        <span>{isPending ? "Skickar..." : "Skicka"}</span>
-        {!isPending && <SendDiagonal width={18} height={18} />}
+        <span>{isPending ? "Skickar..." : "Skicka förfrågan"}</span>
+        {!isPending && <ArrowUpRight strokeWidth={1.5} className="w-5 h-5 group-hover:rotate-45 transition-all duration-200" />}
       </button>
     </form>
   );

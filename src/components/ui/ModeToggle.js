@@ -7,8 +7,6 @@ export default function ModeToggle() {
   const { isLightMode, toggleTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
 
-  // Important: Only show the toggle once the client has mounted
-  // This prevents the toggle from disappearing or flickering
   useEffect(() => {
     setMounted(true);
   }, []);
