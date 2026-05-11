@@ -13,8 +13,8 @@ export default function Home() {
       <TrustRegistration />
       <ServicesGrid />
       <Faq />
-      <ContactSection />
       <LocationStrip />
+      <ContactSection />
       <SeoText />
     </>
   );
