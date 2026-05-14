@@ -38,5 +38,13 @@ export const SERVICES = [
     description: "Pålitliga nätverk och trygga larm.",
     content: "Trött på dåligt wifi eller vill du känna dig tryggare hemma? Vi installerar fasta nätverk som ger snabb och stabil uppkoppling i alla rum. Vi sätter även upp larm som skyddar din fastighet. Vi ser till att tekniken fungerar så att du slipper krångel.",
     seoDescription: "Installation av nätverk och larm i Borås och Göteborg. Stabilt internet och ökad säkerhet för hem och industri."
+  },
+  {
+    slug: "led-konvertering",
+    title: "LED-konvertering",
+    category: "privat",
+    description: "Effektiv och energieffektiv belysning.",
+    content: "Sedan augusti 2023 är lysrör med kvicksilver inte längre tillåtna att tillverka. Passa därför på att uppgradera till modern LED-belysning som både sänker energiförbrukningen och minskar underhållskostnaderna. Vi hjälper dig hela vägen från demontering till installation av nya hållbara och energieffektiva lösningar.",
+    seoDescription: "LED-konvertering i Borås och Göteborg. Effektiv och energieffektiv belysning för hem och industri."
   }
 ];

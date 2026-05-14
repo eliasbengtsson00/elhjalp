@@ -6,7 +6,7 @@ export default function TrustRegistration() {
 
   return (
     <section className="px-6 md:px-12 py-12 max-w-7xl mx-auto">
-      <div className="flex flex-col items-center justify-between gap-10">
+      <div className="flex flex-col items-center justify-between gap-8 md:gap-10">
         
         {/* Text */}
         <div className="flex-1 flex flex-col items-center text-center">
@@ -15,20 +15,23 @@ export default function TrustRegistration() {
           </div>
 
           <p className="text-muted-text text-lg md:text-xl font-light leading-relaxed max-w-md">
-            Elhjälp Sverige AB är registrerat hos <span className="text-white">Elsäkerhetsverket</span> för din säkerhet.
+            Elhjälp Sverige AB är registrerat hos <span className="text-white">Elsäkerhetsverket</span>.
           </p>
 
         </div>
 
-        {/* Badge */}
-        <div className="relative">
+        {/* Badge & Subtitle */}
+        <div className="relative flex flex-col items-center gap-4">
+          <span className="text-muted-text text-md md:text-lg font-light leading-relaxed ">
+            Se vår registrering:
+          </span>
           <a 
             href={registryUrl}
             target="_blank"
             rel="noopener noreferrer"
             className="group block"
           >
-            <div className="relative bg-white px-7 py-3 rounded-full transition-all duration-200 ease-in-out hover:scale-105 active:scale-95">
+            <div className="relative bg-white px-7 py-3 rounded-full transition-all duration-200 ease-in-out hover:scale-105 active:scale-95 shadow-lg shadow-black/20">
               <Image
                 src="/kollaelforetaget.png"
                 alt="Kolla elföretaget"

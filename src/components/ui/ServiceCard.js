@@ -9,7 +9,7 @@ export default function ServiceCard({ title, description, slug }) {
     >
       <div>
         <h3 className="text-lg md:text-xl font-light text-white leading-relaxed mb-2">{title}</h3>
-        <p className="text-zinc-500 text-base">{description}</p>
+        <p className="text-zinc-500 text-base font-light">{description}</p>
       </div>
 
       <div className="self-end mt-4">
