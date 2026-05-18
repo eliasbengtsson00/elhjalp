@@ -33,7 +33,7 @@ export default function Hero() {
             className="group flex items-center gap-4 border border-white bg-white text-zinc-900 px-7 py-4 rounded-full transition-all duration-200 hover:scale-105 active:scale-95"
           >
             <PageEdit width={20} height={20} strokeWidth={1} />
-            <span className="text-base font-light">Få kostnadsfri offert</span>
+            <span className="text-sm font-light">Få kostnadsfri offert</span>
           </a>
 
           {/* Secondary */}
@@ -43,7 +43,7 @@ export default function Hero() {
             className="group flex items-center gap-4 border border-white text-white px-7 py-4 rounded-full transition-all duration-200 hover:scale-105 active:scale-95"
           >
             <ArrowDown width={20} height={20} strokeWidth={1} />
-            <span className="text-base font-light">Se våra tjänster</span>
+            <span className="text-sm font-light">Se våra tjänster</span>
           </a>
         </div>
       </div>
