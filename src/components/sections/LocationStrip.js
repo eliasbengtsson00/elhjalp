@@ -54,7 +54,7 @@ export default function LocationStrip() {
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.2 }}
               key={area}
-              className="px-5 py-2.5 rounded-full border border-zinc-800/80 bg-zinc-900/30 text-sm font-light text-zinc-400 cursor-default"
+              className="px-5 py-2.5 rounded-full border border-zinc-800/80 bg-zinc-900/30 text-base font-light text-zinc-400 cursor-default"
             >
               {area}
             </motion.span>

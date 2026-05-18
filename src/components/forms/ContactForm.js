@@ -98,10 +98,10 @@ export default function ContactForm() {
       <button
         type="submit"
         disabled={isPending}
-        className="group flex items-center justify-center gap-4 border border-white bg-white text-zinc-900 px-7 py-4 rounded-full transition-all duration-200 ease-in-out hover:scale-105 active:scale-95"
+        className="group flex items-center gap-4 border border-white bg-white text-zinc-900 px-7 py-4 rounded-full transition-all duration-200 hover:scale-105 active:scale-95 w-fit mx-auto"
       >
         <span>{isPending ? "Skickar..." : "Skicka förfrågan"}</span>
-        {!isPending && <ArrowUpRight strokeWidth={1.5} className="w-5 h-5 group-hover:rotate-45 transition-all duration-200" />}
+        {!isPending && <ArrowUpRight width={20} height={20} strokeWidth={1} className="group-hover:rotate-45 transition-all duration-200" />}
       </button>
     </form>
   );

@@ -52,7 +52,7 @@ export default function KontaktPage() {
                     href="tel:+46723071194"
                     className="block text-lg font-light text-white hover:text-zinc-300 transition-colors"
                   >
-                    0723-07 11 94
+                    072 307 11 94
                   </a>
                 </div>
               </div>

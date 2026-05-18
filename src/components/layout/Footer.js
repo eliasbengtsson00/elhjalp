@@ -6,12 +6,12 @@ import { useTheme } from "@/components/providers/Theme";
 const FOOTER_LINKS = {
   company: {
     title: "Företag",
-    details: ["Larsgatan 8, 504 66 Borås", "Org.nr: 559366-5929"],
+    details: ["Vinkelvägen 8, 518 41 Sjömarken", "Org.nr: 559366-5929"],
   },
   contact: {
     title: "Kontakt",
     links: [
-      { label: "0723071194", href: "tel:+46723071194" },
+      { label: "072 307 11 94", href: "tel:+46723071194" },
       { label: "philip@elhjalp.com", href: "mailto:philip@elhjalp.com" },
     ],
   },
@@ -80,13 +80,13 @@ export default function Footer() {
 
       {/* Bottom Row */}
       <div className="mx-auto max-w-7xl mt-10">
-        <div className="grid grid-cols-1 md:grid-cols-3 pt-10 gap-y-9 text-center">
+        <div className="grid grid-cols-1 md:grid-cols-3 pt-10 gap-y-9 text-center text-sm font-light">
           {/* 1. Company Info */}
           <div className="flex flex-col space-y-3 md:text-left">
-            <h4 className="text-base font-light text-zinc-600">
+            <h4 className="text-zinc-600">
               {FOOTER_LINKS.company.title}
             </h4>
-            <div className="text-base text-foreground/70 space-y-1">
+            <div className="text-sm text-foreground/70 space-y-1">
               {FOOTER_LINKS.company.details.map((detail) => (
                 <p key={detail}>{detail}</p>
               ))}
@@ -95,17 +95,17 @@ export default function Footer() {
 
           {/* 2. Copyright */}
           <div className="flex justify-center items-end text-center order-3 md:order-2">
-            <p className="text-zinc-700 text-base font-light">
+            <p className="text-zinc-700">
               © {year} Elhjälp Sverige AB
             </p>
           </div>
 
           {/* 3. Contact Info */}
           <div className="flex flex-col space-y-3 md:items-end md:text-right order-2 md:order-3">
-            <h4 className="text-base font-light text-zinc-600">
+            <h4 className="text-zinc-600">
               {FOOTER_LINKS.contact.title}
             </h4>
-            <div className="flex flex-col text-base text-foreground/70 space-y-1">
+            <div className="flex flex-col text-foreground/70 space-y-1">
               {FOOTER_LINKS.contact.links.map((link) => (
                 <a
                   key={link.href}

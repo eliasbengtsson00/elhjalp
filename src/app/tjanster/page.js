@@ -1,6 +1,5 @@
 import { SERVICES } from "@/lib/services";
 import ServiceCard from "@/components/ui/ServiceCard";
-import Link from "next/link";
 
 export default function ServicesPage() {
 

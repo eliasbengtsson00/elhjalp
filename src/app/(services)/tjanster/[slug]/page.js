@@ -2,7 +2,7 @@ import { SERVICES } from "@/lib/services";
 import { notFound } from "next/navigation";
 import ServiceCard from "@/components/ui/ServiceCard";
 import Link from "next/link";
-import { ArrowUpLeft } from "iconoir-react";
+import { ArrowUpLeft, ArrowRight } from "iconoir-react";
 
 export async function generateMetadata({ params }) {
   const { slug } = await params;
@@ -35,8 +35,17 @@ export default async function ServicePage({ params }) {
         </p>
       </div>
 
+      <div className="mt-24">
+        <p className="text-muted-text text-base md:text-lg font-light leading-relaxed">
+          Hittar du inte det du behöver hjälp med? Kontakta oss så hittar vi en
+          lösning!
+        </p>
+
+        
+      </div>
+
       {/* Related Services & View All */}
-      <section className="mt-32 pt-16 border-t borderb border-zinc-900">
+      <section className="mt-24 md:mt-32 pt-16 border-t border-zinc-900">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {/* The 2 Related Service Cards */}
           {relatedServices.map((s) => (

@@ -21,18 +21,19 @@ export default function ContactSection() {
               Behöver du akut hjälp?
             </span>
             <a
-              href="tel:+123456789"
-              className="flex items-center gap-4 border-green-900 border rounded-full px-6 py-4 text-xs uppercase tracking-widest hover:bg-green-900 hover:text-white transition duration-300 w-fit"
+              href="tel:+46723071194"
+              className="
+              group flex items-center gap-4 border border-green-900 text-white px-7 py-4 rounded-full transition-all duration-200 hover:scale-105 active:scale-95 w-fit"
             >
-              <PhoneSolid width={14} height={14} />
-              <span>Ring direkt</span>
+              <PhoneSolid width={20} height={20} strokeWidth={1} />
+              <span className="text-base font-light">Ring direkt</span>
             </a>
           </div>
         </div>
 
         {/* Right */}
         <div className="bg-zinc-900/30 border border-zinc-800/50 rounded-4xl p-8 md:p-12">
-          <h3 className="mb-8 uppercase tracking-widest font-light text-muted-text text-sm">
+          <h3 className="mb-8 font-light text-muted-text text-base">
             Kontakta oss
           </h3>
           <ContactForm />
