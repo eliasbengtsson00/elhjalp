@@ -3,7 +3,7 @@
 import React, { useActionState, useEffect } from "react";
 import { SendDiagonal, Check } from "iconoir-react";
 import { sendEmail } from "@/lib/actions";
-import { ArrowUpRight } from "iconoir-react";
+import { ArrowRight } from "iconoir-react";
 import { sendGTMEvent } from "@next/third-parties/google";
 
 export default function ContactForm() {
@@ -100,8 +100,8 @@ export default function ContactForm() {
         disabled={isPending}
         className="group flex items-center gap-4 border border-white bg-white text-zinc-900 px-7 py-4 rounded-full transition-all duration-200 hover:scale-105 active:scale-95 w-fit mx-auto"
       >
-        <span>{isPending ? "Skickar..." : "Skicka förfrågan"}</span>
-        {!isPending && <ArrowUpRight width={20} height={20} strokeWidth={1} className="group-hover:rotate-45 transition-all duration-200" />}
+        <span className="text-sm font-light">{isPending ? "Skickar..." : "Skicka förfrågan"}</span>
+        {!isPending && <ArrowRight width={20} height={20} strokeWidth={1} />}
       </button>
     </form>
   );

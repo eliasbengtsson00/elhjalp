@@ -1,4 +1,4 @@
-import { PhoneSolid } from "iconoir-react";
+import { Phone } from "iconoir-react";
 import ContactForm from "@/components/forms/ContactForm";
 
 export default function ContactSection() {
@@ -25,8 +25,8 @@ export default function ContactSection() {
               className="
               group flex items-center gap-4 border border-green-900 text-white px-7 py-4 rounded-full transition-all duration-200 hover:scale-105 active:scale-95 w-fit"
             >
-              <PhoneSolid width={20} height={20} strokeWidth={1} />
-              <span className="text-base font-light">Ring direkt</span>
+              <Phone width={20} height={20} strokeWidth={1} />
+              <span className="text-sm font-light">Ring direkt</span>
             </a>
           </div>
         </div>
