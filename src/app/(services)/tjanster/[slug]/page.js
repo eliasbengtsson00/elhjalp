@@ -40,14 +40,10 @@ export default async function ServicePage({ params }) {
           Hittar du inte det du behöver hjälp med? Kontakta oss så hittar vi en
           lösning!
         </p>
-
-        
       </div>
 
-      {/* Related Services & View All */}
-      <section className="mt-24 md:mt-32 pt-16 border-t border-zinc-900">
+      <section className="mt-24 md:mt-32 pt-16">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {/* The 2 Related Service Cards */}
           {relatedServices.map((s) => (
             <ServiceCard key={s.slug} {...s} />
           ))}
@@ -56,12 +52,10 @@ export default async function ServicePage({ params }) {
             href="/tjanster"
             className="group flex flex-col items-center justify-center p-8 min-h-[300px] rounded-4xl border border-zinc-900 bg-zinc-950/20 transition-all duration-300 hover:border-zinc-800 hover:bg-zinc-900/50"
           >
-            {/* The Icon Circle */}
             <div className="mb-4 flex items-center justify-center w-10 h-10 rounded-full border border-zinc-900 text-zinc-600 transition-all duration-300 group-hover:border-zinc-700 group-hover:text-zinc-400 group-hover:-rotate-45">
               <ArrowUpLeft strokeWidth={1.5} className="w-5 h-5" />
             </div>
 
-            {/* The Label */}
             <span className="text-zinc-700 text-base font-light tracking-wide group-hover:text-zinc-500 transition-colors duration-300">
               Visa alla tjänster
             </span>

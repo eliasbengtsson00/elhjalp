@@ -16,6 +16,12 @@ export default function ServicesPage() {
           <ServiceCard key={service.slug} {...service} />
         ))}
       </div>
+      <div className="mt-32">
+        <p className="text-muted-text text-base md:text-lg font-light leading-relaxed">
+          Hittar du inte det du behöver hjälp med? Kontakta oss så hittar vi en
+          lösning!
+        </p>
+      </div>
     </section>
   );
 }

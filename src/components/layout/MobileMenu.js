@@ -48,7 +48,7 @@ export default function MobileMenu({ isOpen, toggleMenu }) {
             key={link.href}
             href={link.href}
             onClick={toggleMenu}
-            className="text-xl text-foreground font-light hover:scale-105 active:scale-95 transition-all duration-200"
+            className="text-lg text-foreground font-light hover:scale-105 active:scale-95 transition-all duration-200"
           >
             {link.name}
           </Link>
@@ -57,7 +57,7 @@ export default function MobileMenu({ isOpen, toggleMenu }) {
         <Link
           href="/kontakt"
           onClick={toggleMenu}
-          className="border border-foreground rounded-full px-7 py-4 text-xl font-light text-foreground hover:scale-105 active:scale-95 transition-all duration-200"
+          className="border border-foreground rounded-full px-7 py-4 text-lg font-light text-foreground hover:scale-105 active:scale-95 transition-all duration-200"
         >
           Ta kontakt
         </Link>
@@ -81,7 +81,7 @@ export default function MobileMenu({ isOpen, toggleMenu }) {
           >
             <Instagram width={18} height={18} />
           </a>
-
+          {/* Theme Switcher 
           <button
             onClick={toggleTheme}
             className="flex items-center justify-center w-10 h-10 text-zinc-500 rounded-full border border-zinc-500/20 hover:border-blue-300/50 hover:text-blue-300 transition-all duration-200 group cursor-pointer"
@@ -95,6 +95,7 @@ export default function MobileMenu({ isOpen, toggleMenu }) {
               <LightBulbOn className="w-5 h-5" />
             )}
           </button>
+          */}
         </div>
       </div>
     </div>
