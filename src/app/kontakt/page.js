@@ -5,7 +5,7 @@ import Image from "next/image";
 
 export default function KontaktPage() {
   return (
-    <main className="px-6 md:px-12 py-24 md:py-28 max-w-7xl mx-auto">
+    <main className="mt-24 px-6 md:px-12 py-24 md:py-28 max-w-7xl mx-auto">
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-start">
         <div className="flex flex-col text-left pt-4">
           <div>

@@ -3,7 +3,7 @@ export default function AboutPage() {
     "https://www.elsakerhetsverket.se/kollaelforetaget/foretagsregister/?foretag=11980897";
 
   return (
-    <main className="px-6 md:px-12 py-24 md:py-32 max-w-7xl mx-auto">
+    <main className="mt-24 px-6 md:px-12 py-24 md:py-32 max-w-7xl mx-auto">
       {/* 1. Header Section */}
       <section className="">
         <h1 className="text-4xl font-light leading-[1.2]">Om oss</h1>

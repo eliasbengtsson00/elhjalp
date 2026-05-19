@@ -37,7 +37,7 @@ export default function Navbar() {
   const isLightMode = mounted && resolvedTheme === "light";
 
   return (
-    <header className="w-full relative z-50">
+    <header className="absolute top-0 left-0 w-full z-50 bg-transparent">
       <nav className="mx-auto flex items-center justify-between px-6 py-8 max-w-7xl md:px-12">
         <Link href="/" className="relative w-32 outline-none">
           <Image
