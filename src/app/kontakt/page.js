@@ -44,10 +44,11 @@ export default function KontaktPage() {
         <div className="flex items-center gap-5">
           <div className="w-20 h-20 rounded-full overflow-hidden relative shrink-0">
             <Image
-              src="/placeholder.jpg"
+              src="/profile.jpeg"
               alt="Philip Falk"
               fill
-              className="object-cover"
+              sizes="80px"
+              className="object-cover object-[50%_40%]"
             />
           </div>
           <div className="flex flex-col">

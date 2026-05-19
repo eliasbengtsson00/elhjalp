@@ -38,7 +38,7 @@ export const viewport = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="sv" suppressHydrationWarning className={zalando.variable}>
+    <html lang="sv" suppressHydrationWarning className={zalando.variable} data-scroll-behavior="smooth">
       <head>
         {/* 1. GTM is now inside head */}
         <GoogleTagManager gtmId={process.env.NEXT_PUBLIC_GTM_ID} />
