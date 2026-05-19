@@ -26,7 +26,7 @@ export default function Hero() {
           className="object-cover object-[70%_center] md:object-center opacity-15 md:opacity-30"
         />
         {/* Gradient overlays for text legibility and section blending */}
-        <div className="absolute inset-0 bg-gradient-to-r from-zinc-950 via-zinc-950/80 to-transparent"></div>
+        <div className="absolute inset-0 bg-gradient-to-r from-zinc-950 via-zinc-950/80 to-transparent via-20% to-80% md:via-40% md:to-100%"></div>
         <div className="absolute inset-0 bg-gradient-to-t from-zinc-950 via-transparent to-transparent"></div>
       </div>
 
