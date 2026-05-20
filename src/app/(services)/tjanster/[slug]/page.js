@@ -16,6 +16,12 @@ export async function generateMetadata({ params }) {
   };
 }
 
+export async function generateStaticParams() {
+  return SERVICES.map((service) => ({
+    slug: service.slug,
+  }));
+}
+
 export default async function ServicePage({ params }) {
   const { slug } = await params;
   const service = SERVICES.find((s) => s.slug === slug);

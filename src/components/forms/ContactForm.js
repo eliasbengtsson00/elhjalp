@@ -1,25 +1,26 @@
 "use client";
 
 import React, { useActionState, useEffect } from "react";
-import { SendDiagonal, Check } from "iconoir-react";
+import { usePathname } from "next/navigation";
+import { Check } from "iconoir-react";
 import { sendEmail } from "@/lib/actions";
 import { ArrowRight } from "iconoir-react";
 import { sendGTMEvent } from "@next/third-parties/google";
 
 export default function ContactForm() {
   const [state, formAction, isPending] = useActionState(sendEmail, null);
+  const pathname = usePathname();
 
   useEffect(() => {
     if (state?.success) {
       sendGTMEvent({
         event: "form_success",
         value: "lead_form_electrical",
-        page_location: window.location.pathname,
+        page_location: pathname,
       });
     }
-  }, [state?.success]);
+  }, [state?.success, pathname]);
 
-  // Success State View
   if (state?.success) {
     return (
       <div className="flex flex-col items-center justify-center p-12 bg-background border border-border-subtle rounded-3xl text-center animate-in fade-in zoom-in duration-300">
@@ -36,7 +37,7 @@ export default function ContactForm() {
 
   return (
     <form action={formAction} className="flex flex-col gap-6 font-light">
-      <input type="hidden" name="page_url" value={typeof window !== 'undefined' ? window.location.pathname : ''} />
+      <input type="hidden" name="page_url" value={pathname || ""} />
       <input
         type="text"
         name="_gotcha"
@@ -100,7 +101,9 @@ export default function ContactForm() {
         disabled={isPending}
         className="group flex items-center gap-4 border border-white bg-white text-zinc-900 px-7 py-4 rounded-full transition-all duration-200 hover:scale-105 active:scale-95 w-fit mx-auto"
       >
-        <span className="text-sm font-light">{isPending ? "Skickar..." : "Skicka förfrågan"}</span>
+        <span className="text-sm font-light">
+          {isPending ? "Skickar..." : "Skicka förfrågan"}
+        </span>
         {!isPending && <ArrowRight width={20} height={20} strokeWidth={1} />}
       </button>
     </form>
