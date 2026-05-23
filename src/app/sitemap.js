@@ -1,4 +1,4 @@
-import { getServices } from "@/lib/services";
+import { SERVICES } from "@/lib/services";
 
 export default async function sitemap() {
   const baseUrl = "https://elhjalp.com";
@@ -16,19 +16,13 @@ export default async function sitemap() {
     priority: route === "" ? 1.0 : 0.8,
   }));
 
-  try {
-    // Dynamic service routes
-    const services = await getServices();
-    const servicePages = services.map((service) => ({
-      url: `${baseUrl}/tjanster/${service.slug}`,
-      lastModified: new Date().toISOString().split('T')[0],
-      changeFrequency: "monthly",
-      priority: 0.7,
-    }));
+  // Dynamic service routes using your static SERVICES array
+  const servicePages = SERVICES.map((service) => ({
+    url: `${baseUrl}/tjanster/${service.slug}`,
+    lastModified: new Date().toISOString().split('T')[0],
+    changeFrequency: "monthly",
+    priority: 0.7,
+  }));
 
-    return [...staticPages, ...servicePages];
-  } catch (error) {
-    // Fallback to just static pages if service fetching fails
-    return staticPages;
-  }
+  return [...staticPages, ...servicePages];
 }
