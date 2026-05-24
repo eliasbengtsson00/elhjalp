@@ -1,6 +1,5 @@
 "use client";
 
-import { PageEdit, ArrowDown } from "iconoir-react";
 import Image from "next/image";
 
 export default function Hero() {
@@ -43,23 +42,21 @@ export default function Hero() {
           </p>
 
           {/* Buttons */}
-          <div className="mt-20 flex flex-col sm:flex-row items-start sm:items-center gap-6">
+          <div className="mt-10 flex flex-col sm:flex-row items-center gap-4 w-full sm:w-auto">
             <a
               href="#contact"
               onClick={(e) => scrollToSection(e, "contact")}
-              className="group flex items-center gap-4 border border-white bg-white text-zinc-900 px-7 py-4 rounded-full transition-all duration-200 hover:scale-105 active:scale-95"
+              className="w-full sm:w-auto text-center border border-white bg-white text-zinc-900 px-8 py-4 rounded-full text-sm font-light transition-all duration-200 hover:scale-105 active:scale-95"
             >
-              <PageEdit width={20} height={20} strokeWidth={1} />
-              <span className="text-sm font-light">Få kostnadsfri offert</span>
+              Ta kontakt
             </a>
 
             <a
               href="#services"
               onClick={(e) => scrollToSection(e, "services")}
-              className="group flex items-center gap-4 border border-white text-white px-7 py-4 rounded-full transition-all duration-200 hover:scale-105 active:scale-95"
+              className="w-full sm:w-auto text-center border border-white text-white px-8 py-4 rounded-full text-sm font-light transition-all duration-200 hover:scale-105 active:scale-95"
             >
-              <ArrowDown width={20} height={20} strokeWidth={1} />
-              <span className="text-sm font-light">Se våra tjänster</span>
+              Se våra tjänster
             </a>
           </div>
         </div>
