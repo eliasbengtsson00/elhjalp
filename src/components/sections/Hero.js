@@ -42,11 +42,11 @@ export default function Hero() {
           </p>
 
           {/* Buttons */}
-          <div className="mt-16 flex flex-col sm:flex-row items-center gap-4 w-full sm:w-auto">
+          <div className="mt-16 flex flex-col sm:flex-row items-start gap-4">
             <a
               href="#contact"
               onClick={(e) => scrollToSection(e, "contact")}
-              className="w-full sm:w-auto text-center border border-white bg-white text-zinc-900 px-8 py-4 rounded-full text-sm font-light transition-all duration-200 hover:scale-105 active:scale-95"
+              className="w-fit text-center border border-white bg-white text-zinc-900 px-8 py-4 rounded-full text-sm font-light transition-all duration-200 hover:scale-105 active:scale-95"
             >
               Ta kontakt
             </a>
@@ -54,7 +54,7 @@ export default function Hero() {
             <a
               href="#services"
               onClick={(e) => scrollToSection(e, "services")}
-              className="w-full sm:w-auto text-center border border-white text-white px-8 py-4 rounded-full text-sm font-light transition-all duration-200 hover:scale-105 active:scale-95"
+              className="w-fit text-center border border-white text-white px-8 py-4 rounded-full text-sm font-light transition-all duration-200 hover:scale-105 active:scale-95"
             >
               Se våra tjänster
             </a>
