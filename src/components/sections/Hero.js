@@ -42,7 +42,7 @@ export default function Hero() {
           </p>
 
           {/* Buttons */}
-          <div className="mt-10 flex flex-col sm:flex-row items-center gap-4 w-full sm:w-auto">
+          <div className="mt-16 flex flex-col sm:flex-row items-center gap-4 w-full sm:w-auto">
             <a
               href="#contact"
               onClick={(e) => scrollToSection(e, "contact")}
