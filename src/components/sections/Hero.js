@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 
 export default function Hero() {
   const scrollToSection = (e, id) => {
@@ -25,8 +26,8 @@ export default function Hero() {
           className="object-cover object-[70%_center] md:object-center opacity-15 md:opacity-30"
         />
         {/* Gradient overlays for text legibility and section blending */}
-        <div className="absolute inset-0 bg-gradient-to-r from-zinc-950 via-zinc-950/80 to-transparent via-20% to-80% md:via-40% md:to-100%"></div>
-        <div className="absolute inset-0 bg-gradient-to-t from-zinc-950 via-transparent to-transparent"></div>
+        <div className="absolute inset-0 bg-gradient-to-r from-background via-background/80 to-transparent via-20% to-80% md:via-40% md:to-100%"></div>
+        <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent"></div>
       </div>
 
       {/* Content Container */}
@@ -43,18 +44,17 @@ export default function Hero() {
 
           {/* Buttons */}
           <div className="mt-16 flex flex-col sm:flex-row items-start gap-4">
-            <a
-              href="#contact"
-              onClick={(e) => scrollToSection(e, "contact")}
-              className="w-fit text-center border border-white bg-white text-zinc-900 px-8 py-4 rounded-full text-sm font-light transition-all duration-200 hover:scale-105 active:scale-95"
+            <Link
+              href="/kontakt"
+              className="w-fit text-center border border-foreground bg-foreground text-background px-8 py-4 rounded-full text-sm font-light transition-all duration-200 hover:scale-105 active:scale-95"
             >
               Ta kontakt
-            </a>
+            </Link>
 
             <a
               href="#services"
               onClick={(e) => scrollToSection(e, "services")}
-              className="w-fit text-center border border-white text-white px-8 py-4 rounded-full text-sm font-light transition-all duration-200 hover:scale-105 active:scale-95"
+              className="w-fit text-center border border-foreground text-foreground px-8 py-4 rounded-full text-sm font-light transition-all duration-200 hover:scale-105 active:scale-95"
             >
               Se våra tjänster
             </a>

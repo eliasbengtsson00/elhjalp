@@ -68,7 +68,7 @@ export default function MobileMenu({ isOpen, toggleMenu }) {
             href={FOOTER_LINKS.socials.facebook.href}
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-center justify-center w-10 h-10 rounded-full border border-zinc-500/20 hover:border-zinc-500 transition-all duration-200 text-zinc-500 hover:text-foreground"
+            className="flex items-center justify-center w-10 h-10 rounded-full border border-border-subtle hover:border-border-medium transition-all duration-200 text-text-dim hover:text-foreground"
           >
             <Facebook width={18} height={18} />
           </a>
@@ -77,14 +77,14 @@ export default function MobileMenu({ isOpen, toggleMenu }) {
             href={FOOTER_LINKS.socials.instagram.href}
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-center justify-center w-10 h-10 rounded-full border border-zinc-500/20 hover:border-zinc-500 transition-all duration-200 text-zinc-500 hover:text-foreground"
+            className="flex items-center justify-center w-10 h-10 rounded-full border border-border-subtle hover:border-border-medium transition-all duration-200 text-text-dim hover:text-foreground"
           >
             <Instagram width={18} height={18} />
           </a>
           {/* Theme Switcher 
           <button
             onClick={toggleTheme}
-            className="flex items-center justify-center w-10 h-10 text-zinc-500 rounded-full border border-zinc-500/20 hover:border-blue-300/50 hover:text-blue-300 transition-all duration-200 group cursor-pointer"
+            className="flex items-center justify-center w-10 h-10 text-text-dim rounded-full border border-border-subtle hover:border-blue-300/50 hover:text-blue-300 transition-all duration-200 group cursor-pointer"
             aria-label="Byt tema"
           >
             {!mounted ? (

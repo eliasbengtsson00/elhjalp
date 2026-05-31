@@ -19,7 +19,7 @@ export default function ServicesGrid() {
         <div className="mt-16 flex justify-center">
           <Link 
             href="/tjanster" 
-            className="text-zinc-500 text-base font-light hover:text-white transition-all duration-200"
+            className="text-muted-text text-base font-light hover:text-foreground transition-all duration-200"
           >
               Visa alla tjänster
           </Link>

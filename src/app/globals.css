@@ -2,36 +2,49 @@
 
 @theme {
   --font-sans: var(--font-zalando), ui-sans-serif, system-ui, sans-serif;
-
   --color-background: var(--bg);
   --color-foreground: var(--fg);
   --color-border-subtle: var(--brd);
+  --color-border-medium: var(--brd-md);
+  --color-text-dim: var(--txt-dim);
   --color-muted-text: var(--txt-muted);
-
+  --color-surface: var(--surface);
+  --color-surface-hover: var(--surface-hover);
   --transition-delay-theme: 500ms;
 }
 
 html {
-  scroll-behavior: smooth; 
+  scroll-behavior: smooth;
 }
 
 :root {
   --bg: oklch(14.1% 0.005 285.823);
   --fg: #ffffff;
-  --brd: #18181b;       /* zinc-900 */
-  --txt-muted: #a1a1aa; /* zinc-400 */
+  --brd: #18181b;
+  --brd-md: #3f3f46; 
+  --txt-dim: #71717a;
+  --txt-muted: #a1a1aa;
+  --surface: #18181b;
+  --surface-hover: #27272a;
 }
 
 .light {
-  --bg: #fafafa;        /* zinc-50 */
+  --bg: #fafafa;
   --fg: #010101;
-  --brd: #e4e4e7;       /* zinc-200 */
-  --txt-muted: #71717a; /* zinc-500 */
+  --brd: #e4e4e7;
+  --brd-md: #d4d4d8; 
+  --txt-dim: #a1a1aa;
+  --txt-muted: #71717a;
+  --surface: #f4f4f5;
+  --surface-hover: #e4e4e7;
 }
 
 
 @layer base {
-  *, ::after, ::before {
+
+  *,
+  ::after,
+  ::before {
     @apply border-border-subtle;
   }
 
@@ -39,15 +52,18 @@ html {
     background-color: var(--color-background);
     color: var(--color-foreground);
     font-family: var(--font-sans);
-    transition: background-color var(--transition-delay-theme) ease, 
-                color var(--transition-delay-theme) ease,
-                border-color var(--transition-delay-theme) ease;
+    transition: background-color var(--transition-delay-theme) ease,
+      color var(--transition-delay-theme) ease,
+      border-color var(--transition-delay-theme) ease;
     @apply antialiased;
   }
 
-  input, textarea, button, a {
-    transition: border-color var(--transition-delay-theme) ease, 
-                background-color var(--transition-delay-theme) ease,
-                color var(--transition-delay-theme) ease;
+  input,
+  textarea,
+  button,
+  a {
+    transition: border-color var(--transition-delay-theme) ease,
+      background-color var(--transition-delay-theme) ease,
+      color var(--transition-delay-theme) ease;
   }
 }

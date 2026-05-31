@@ -38,25 +38,22 @@ export default function Footer() {
   return (
     <footer className="pb-12 md:px-12 transition-colors duration-200">
       <div className="mx-auto max-w-7xl">
-        {/* Top Row */}
         <div className="pt-12 flex justify-center items-center gap-4">
 
-          {/* Facebook */}
           <a 
             href={FOOTER_LINKS.socials.facebook.href} 
             target="_blank" 
             rel="noopener noreferrer"
-            className="flex items-center justify-center w-10 h-10 rounded-full border border-border-subtle hover:border-zinc-500 transition-all duration-200 text-zinc-500 hover:text-foreground"
+            className="flex items-center justify-center w-10 h-10 rounded-full border border-border-subtle hover:border-border-medium transition-all duration-200 text-text-dim hover:text-foreground"
           >
             <Facebook width={18} height={18} />
           </a>
           
-          {/* Instagram */}
           <a 
             href={FOOTER_LINKS.socials.instagram.href} 
             target="_blank" 
             rel="noopener noreferrer"
-            className="flex items-center justify-center w-10 h-10 rounded-full border border-border-subtle hover:border-zinc-500 transition-all duration-200 text-zinc-500 hover:text-foreground"
+            className="flex items-center justify-center w-10 h-10 rounded-full border border-border-subtle hover:border-border-medium transition-all duration-200 text-text-dim hover:text-foreground"
           >
             <Instagram width={18} height={18} />
           </a>
@@ -64,7 +61,7 @@ export default function Footer() {
           {/* Light Switch 
           <button
             onClick={toggleTheme}
-            className="flex items-center justify-center w-10 h-10 text-zinc-500 rounded-full border border-border-subtle hover:border-blue-300/50 hover:text-blue-300 transition-all duration-200 group cursor-pointer"
+            className="flex items-center justify-center w-10 h-10 text-text-dim rounded-full border border-border-subtle hover:border-blue-300/50 hover:text-blue-300 transition-all duration-200 group cursor-pointer"
             aria-label="Tänd lampan"
           >
             {!mounted ? (
@@ -79,12 +76,10 @@ export default function Footer() {
         </div>
       </div>
 
-      {/* Bottom Row */}
       <div className="mx-auto max-w-7xl mt-10">
         <div className="grid grid-cols-1 md:grid-cols-3 pt-10 gap-y-9 text-center text-sm font-light">
-          {/* 1. Company Info */}
           <div className="flex flex-col space-y-3 md:text-left">
-            <h4 className="text-zinc-600">
+            <h4 className="text-text-dim">
               {FOOTER_LINKS.company.title}
             </h4>
             <div className="text-sm text-foreground/70 space-y-1">
@@ -94,16 +89,14 @@ export default function Footer() {
             </div>
           </div>
 
-          {/* 2. Copyright */}
           <div className="flex justify-center items-end text-center order-3 md:order-2">
-            <p className="text-zinc-700">
+            <p className="text-text-dim">
               © {year} Elhjälp Sverige AB
             </p>
           </div>
 
-          {/* 3. Contact Info */}
           <div className="flex flex-col space-y-3 md:items-end md:text-right order-2 md:order-3">
-            <h4 className="text-zinc-600">
+            <h4 className="text-text-dim">
               {FOOTER_LINKS.contact.title}
             </h4>
             <div className="flex flex-col text-foreground/70 space-y-1">
