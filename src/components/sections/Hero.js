@@ -22,6 +22,8 @@ export default function Hero() {
           alt="Elhjälp servicebil"
           fill
           priority
+          loading="eager"
+          fetchPriority="high"
           sizes="100vw"
           className="object-cover object-[70%_center] md:object-center opacity-15 md:opacity-30"
         />
