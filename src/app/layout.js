@@ -1,6 +1,6 @@
 import "./globals.css";
 import { Zalando_Sans_Expanded } from "next/font/google";
-import { GoogleTagManager } from "@next/third-parties/google";
+import Script from "next/script"; // <-- Replaced GoogleTagManager with native Script
 import Theme from "@/components/providers/Theme";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
@@ -91,6 +91,7 @@ export default function RootLayout({ children }) {
     description:
       "Professionella elinstallationer, felsökning och service för privatpersoner och företag i Borås med omnejd.",
   };
+  
   return (
     <html
       lang="sv"
@@ -99,22 +100,24 @@ export default function RootLayout({ children }) {
       data-scroll-behavior="smooth"
     >
       <head>
-        <GoogleTagManager gtmId={process.env.NEXT_PUBLIC_GTM_ID} />
+        {/* Swapped to Next.js Script with lazyOnload */}
+        <Script
+          id="gtm-script"
+          strategy="lazyOnload"
+          dangerouslySetInnerHTML={{
+            __html: `
+              (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+              new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+              j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+              'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+              })(window,document,'script','dataLayer','${process.env.NEXT_PUBLIC_GTM_ID}');
+            `,
+          }}
+        />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
-        {/*
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `
-              if (localStorage.getItem('theme') === 'light') {
-                document.documentElement.classList.add('light');
-              }
-            `,
-          }}
-        />
-        */}
       </head>
       <body className="antialiased font-sans">
         <Theme>
