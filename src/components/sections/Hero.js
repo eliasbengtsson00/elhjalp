@@ -18,7 +18,7 @@ export default function Hero() {
       {/* Background Image Container */}
       <div className="absolute inset-0 z-0">
         <Image
-          src="/hero-bg.jpeg"
+          src="/hero-bg.webp"
           alt="Elhjälp servicebil"
           fill
           priority
