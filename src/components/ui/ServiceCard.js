@@ -8,7 +8,7 @@ export default function ServiceCard({ title, description, slug }) {
       className="group relative flex flex-col justify-between p-8 min-h-[300px] bg-surface/50 border border-surface-hover rounded-4xl transition-all duration-200 hover:border-border-subtle hover:bg-surface cursor-pointer"
     >
       <div>
-        <h3 className="text-lg md:text-xl font-light text-foreground leading-relaxed mb-2">{title}</h3>
+        <h2 className="text-lg md:text-xl font-light text-foreground leading-relaxed mb-2">{title}</h2>
         <p className="text-muted-text text-base font-light">{description}</p>
       </div>
 

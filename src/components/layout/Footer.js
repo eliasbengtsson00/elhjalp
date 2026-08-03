@@ -44,6 +44,7 @@ export default function Footer() {
             href={FOOTER_LINKS.socials.facebook.href} 
             target="_blank" 
             rel="noopener noreferrer"
+            aria-label="Besök Elhjälp på Facebook"
             className="flex items-center justify-center w-10 h-10 rounded-full border border-border-subtle hover:border-border-medium transition-all duration-200 text-text-dim hover:text-foreground"
           >
             <Facebook width={18} height={18} />
@@ -53,6 +54,7 @@ export default function Footer() {
             href={FOOTER_LINKS.socials.instagram.href} 
             target="_blank" 
             rel="noopener noreferrer"
+            aria-label="Besök Elhjälp på Instagram"
             className="flex items-center justify-center w-10 h-10 rounded-full border border-border-subtle hover:border-border-medium transition-all duration-200 text-text-dim hover:text-foreground"
           >
             <Instagram width={18} height={18} />
