@@ -65,7 +65,7 @@ export default function LocationStrip() {
             <motion.button
               layout
               onClick={() => setIsOpen(true)}
-              className="px-5 py-2.5 rounded-full border border-dashed border-zinc-700 text-sm font-normal text-zinc-500 hover:text-white hover:border-zinc-500 transition-colors duration-200 outline-none cursor-pointer"
+              className="px-5 py-2.5 rounded-full border border-dashed border-zinc-700 text-base font-light text-zinc-400 hover:text-white hover:border-zinc-500 transition-colors duration-200 outline-none cursor-pointer"
             >
               + {areas.length - 4} fler orter
             </motion.button>
