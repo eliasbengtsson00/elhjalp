@@ -30,7 +30,7 @@ export async function sendEmail(prevState, formData) {
 
   try {
     await resend.emails.send({
-      from: `Elhjälp Webbformulär <info@elhjalp.com>`,
+      from: `Elhjälp Webbformulär <${process.env.RESEND_FROM_EMAIL}>`,
       to: [process.env.CONTACT_EMAIL],
       replyTo: [email.toString()],
       subject: `Ny förfrågan: ${name}`,

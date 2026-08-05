@@ -1,7 +1,7 @@
 import { SERVICES } from "@/lib/services";
 
 export default async function sitemap() {
-  const baseUrl = "https://www.elhjalp.com";
+  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL;
 
   // Static core pages
   const staticPages = [

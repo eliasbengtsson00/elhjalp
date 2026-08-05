@@ -1,7 +1,4 @@
 export default function AboutPage() {
-  const registryUrl =
-    "https://www.elsakerhetsverket.se/kollaelforetaget/foretagsregister/?foretag=11980897";
-
   return (
     <main className="mt-24 px-6 md:px-12 py-24 md:py-32 max-w-7xl mx-auto">
       {/* 1. Header Section */}

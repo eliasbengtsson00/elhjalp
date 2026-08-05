@@ -13,6 +13,8 @@ const zalando = Zalando_Sans_Expanded({
   adjustFontFallback: false,
 });
 
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL;
+
 export const metadata = {
   title: {
     default: "Elhjälp Sverige AB | Din elektriker i Borås",
@@ -20,7 +22,7 @@ export const metadata = {
   },
   description:
     "Professionella elinstallationer, felsökning och service för privatpersoner och företag i Borås med omnejd.",
-  metadataBase: new URL("https://elhjalp.com"),
+  metadataBase: new URL(SITE_URL),
   alternates: {
     canonical: "/",
   },
@@ -42,9 +44,9 @@ export default function RootLayout({ children }) {
     "@context": "https://schema.org",
     "@type": "Electrician",
     name: "Elhjälp Sverige AB",
-    url: "https://elhjalp.com",
-    logo: "https://elhjalp.com/logo.svg",
-    image: "https://elhjalp.com/logo.svg",
+    url: SITE_URL,
+    logo: `${SITE_URL}/logo.svg`,
+    image: `${SITE_URL}/logo.svg`,
     telephone: "+46723071194",
     email: "philip@elhjalp.com",
     taxID: "559366-5929",

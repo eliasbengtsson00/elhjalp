@@ -1,9 +1,8 @@
 import Image from "next/image";
 import { BadgeCheck } from "iconoir-react";
+import { REGISTRY_URL } from "@/lib/site";
 
 export default function TrustRegistration() {
-  const registryUrl = "https://www.elsakerhetsverket.se/kollaelforetaget/foretagsregister/?foretag=11980897";
-
   return (
     <section className="px-6 md:px-12 py-12 max-w-7xl mx-auto">
       <div className="flex flex-col items-center justify-between gap-8 md:gap-10">
@@ -25,8 +24,8 @@ export default function TrustRegistration() {
           <span className="text-muted-text text-md md:text-lg font-light leading-relaxed ">
             Se vår registrering:
           </span>
-          <a 
-            href={registryUrl}
+          <a
+            href={REGISTRY_URL}
             target="_blank"
             rel="noopener noreferrer"
             className="group block"
