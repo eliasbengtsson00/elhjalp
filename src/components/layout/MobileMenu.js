@@ -1,41 +1,10 @@
 "use client";
-import { useState, useEffect } from "react";
-import { useTheme } from "next-themes";
 import Link from "next/link";
 import { NAV_LINKS } from "./Navbar";
-import { Facebook, Instagram, LightBulbOn, LightBulbOff } from "iconoir-react";
-
-const FOOTER_LINKS = {
-  company: {
-    title: "Företag",
-    details: ["Larsgatan 8, 504 66 Borås", "Org.nr: 559366-5929"],
-  },
-  contact: {
-    title: "Kontakt",
-    links: [
-      { label: "0723071194", href: "tel:+46723071194" },
-      { label: "philip@elhjalp.com", href: "mailto:philip@elhjalp.com" },
-    ],
-  },
-  socials: {
-    facebook: {
-      href: "https://www.facebook.com/profile.php?id=61569419582779",
-    },
-    instagram: {
-      href: "https://www.instagram.com/elhjalpab/",
-    },
-  },
-};
+import { Facebook, Instagram } from "iconoir-react";
+import { FOOTER_LINKS } from "@/lib/site";
 
 export default function MobileMenu({ isOpen, toggleMenu }) {
-  const [mounted, setMounted] = useState(false);
-  const { theme, setTheme, resolvedTheme } = useTheme();
-
-  useEffect(() => setMounted(true), []);
-
-  const isLightMode = resolvedTheme === "light";
-  const toggleTheme = () => setTheme(isLightMode ? "dark" : "light");
-
   return (
     <div
       className={`fixed inset-0 z-40 bg-background/95 backdrop-blur-2xl transition-all duration-500 ease-in-out lg:hidden ${
@@ -62,7 +31,7 @@ export default function MobileMenu({ isOpen, toggleMenu }) {
           Ta kontakt
         </Link>
 
-        {/* Socials & Theme Switcher */}
+        {/* Socials */}
         <div className="pt-12 flex justify-center items-center gap-4">
           <a
             href={FOOTER_LINKS.socials.facebook.href}
@@ -81,21 +50,6 @@ export default function MobileMenu({ isOpen, toggleMenu }) {
           >
             <Instagram width={18} height={18} />
           </a>
-          {/* Theme Switcher 
-          <button
-            onClick={toggleTheme}
-            className="flex items-center justify-center w-10 h-10 text-text-dim rounded-full border border-border-subtle hover:border-blue-300/50 hover:text-blue-300 transition-all duration-200 group cursor-pointer"
-            aria-label="Byt tema"
-          >
-            {!mounted ? (
-              <div className="w-5 h-5" />
-            ) : isLightMode ? (
-              <LightBulbOff className="w-5 h-5" />
-            ) : (
-              <LightBulbOn className="w-5 h-5" />
-            )}
-          </button>
-          */}
         </div>
       </div>
     </div>

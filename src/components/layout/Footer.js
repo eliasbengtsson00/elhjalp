@@ -1,38 +1,13 @@
 "use client";
 import { useState, useEffect } from "react";
-import { Facebook, Instagram, LightBulbOn, LightBulbOff } from "iconoir-react";
-import { useTheme } from "@/components/providers/Theme";
-
-const FOOTER_LINKS = {
-  company: {
-    title: "Företag",
-    details: ["Vinkelvägen 8, 518 41 Sjömarken", "Org.nr: 559366-5929"],
-  },
-  contact: {
-    title: "Kontakt",
-    links: [
-      { label: "072 307 11 94", href: "tel:+46723071194" },
-      { label: "philip@elhjalp.com", href: "mailto:philip@elhjalp.com" },
-    ],
-  },
-  socials: {
-    facebook: {
-      href: "https://www.facebook.com/profile.php?id=61569419582779",
-    },
-    instagram: {
-      href: "https://www.instagram.com/elhjalpab/",
-    },
-  },
-};
+import { Facebook, Instagram } from "iconoir-react";
+import { FOOTER_LINKS } from "@/lib/site";
 
 export default function Footer() {
   const [year, setYear] = useState(2026);
-  const { isLightMode, toggleTheme } = useTheme();
-  const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
     setYear(new Date().getFullYear());
-    setMounted(true);
   }, []);
 
   return (
@@ -59,22 +34,6 @@ export default function Footer() {
           >
             <Instagram width={18} height={18} />
           </a>
-
-          {/* Light Switch 
-          <button
-            onClick={toggleTheme}
-            className="flex items-center justify-center w-10 h-10 text-text-dim rounded-full border border-border-subtle hover:border-blue-300/50 hover:text-blue-300 transition-all duration-200 group cursor-pointer"
-            aria-label="Tänd lampan"
-          >
-            {!mounted ? (
-              <div className="w-5 h-5" />
-            ) : isLightMode ? (
-              <LightBulbOff className="w-5 h-5 group-hover:text-blue-600 hover:border-blue-600" />
-            ) : (
-              <LightBulbOn className="w-5 h-5"/>
-            )}
-          </button>
-          */}
         </div>
       </div>
 

@@ -2,7 +2,6 @@
 import { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { useTheme } from "next-themes";
 import MobileMenu from "./MobileMenu";
 
 export const NAV_LINKS = [
@@ -12,12 +11,6 @@ export const NAV_LINKS = [
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
-  const [mounted, setMounted] = useState(false);
-  const { resolvedTheme } = useTheme();
-
-  useEffect(() => {
-    setMounted(true);
-  }, []);
 
   useEffect(() => {
     if (isOpen) {
@@ -30,8 +23,6 @@ export default function Navbar() {
 
   const toggleMenu = () => setIsOpen(!isOpen);
 
-  const isLightMode = mounted && resolvedTheme === "light";
-
   return (
     <header className="absolute top-0 left-0 w-full z-50 bg-transparent">
       <nav className="mx-auto flex items-center justify-between px-6 py-8 max-w-7xl md:px-12">
@@ -41,7 +32,7 @@ export default function Navbar() {
             alt="Logo"
             width={130}
             height={32}
-            className={`${isLightMode ? "" : "invert"} transition-all duration-500`}
+            className="invert transition-all duration-500"
             priority
           />
         </Link>

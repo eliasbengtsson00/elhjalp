@@ -56,13 +56,13 @@ export default async function ServicePage({ params }) {
 
           <Link
             href="/tjanster"
-            className="group flex flex-col items-center justify-center p-8 min-h-[300px] rounded-4xl border border-zinc-900 bg-zinc-950/20 transition-all duration-300 hover:border-zinc-800 hover:bg-zinc-900/50"
+            className="group flex flex-col items-center justify-center p-8 min-h-[300px] rounded-4xl border border-surface-hover bg-surface/50 transition-all duration-300 hover:border-border-subtle hover:bg-surface"
           >
-            <div className="mb-4 flex items-center justify-center w-10 h-10 rounded-full border border-zinc-900 text-zinc-600 transition-all duration-300 group-hover:border-zinc-700 group-hover:text-zinc-400 group-hover:-rotate-45">
+            <div className="mb-4 flex items-center justify-center w-10 h-10 rounded-full border border-surface-hover text-muted-text transition-all duration-300 group-hover:border-foreground group-hover:text-foreground group-hover:-rotate-45">
               <ArrowUpLeft strokeWidth={1.5} className="w-5 h-5" />
             </div>
 
-            <span className="text-zinc-700 text-base font-light tracking-wide group-hover:text-zinc-500 transition-colors duration-300">
+            <span className="text-muted-text text-base font-light tracking-wide group-hover:text-foreground transition-colors duration-300">
               Visa alla tjänster
             </span>
           </Link>

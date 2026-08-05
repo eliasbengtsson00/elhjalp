@@ -10,7 +10,6 @@
   --color-muted-text: var(--txt-muted);
   --color-surface: var(--surface);
   --color-surface-hover: var(--surface-hover);
-  --transition-delay-theme: 500ms;
 }
 
 html {
@@ -28,18 +27,6 @@ html {
   --surface-hover: #27272a;
 }
 
-.light {
-  --bg: #fafafa;
-  --fg: #010101;
-  --brd: #e4e4e7;
-  --brd-md: #d4d4d8; 
-  --txt-dim: #a1a1aa;
-  --txt-muted: #d4d4d8;
-  --surface: #f4f4f5;
-  --surface-hover: #e4e4e7;
-}
-
-
 @layer base {
 
   *,
@@ -52,18 +39,6 @@ html {
     background-color: var(--color-background);
     color: var(--color-foreground);
     font-family: var(--font-sans);
-    transition: background-color var(--transition-delay-theme) ease,
-      color var(--transition-delay-theme) ease,
-      border-color var(--transition-delay-theme) ease;
     @apply antialiased;
-  }
-
-  input,
-  textarea,
-  button,
-  a {
-    transition: border-color var(--transition-delay-theme) ease,
-      background-color var(--transition-delay-theme) ease,
-      color var(--transition-delay-theme) ease;
   }
 }
