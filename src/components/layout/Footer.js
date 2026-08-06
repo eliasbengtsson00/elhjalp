@@ -1,9 +1,8 @@
 "use client";
 import { useState, useEffect } from "react";
 import { Facebook, Instagram } from "iconoir-react";
-import { FOOTER_LINKS } from "@/lib/site";
 
-export default function Footer() {
+export default function Footer({ companyDetails, contactInfo, socials }) {
   const [year, setYear] = useState(2026);
 
   useEffect(() => {
@@ -15,19 +14,19 @@ export default function Footer() {
       <div className="mx-auto max-w-7xl">
         <div className="pt-12 flex justify-center items-center gap-4">
 
-          <a 
-            href={FOOTER_LINKS.socials.facebook.href} 
-            target="_blank" 
+          <a
+            href={socials?.facebook}
+            target="_blank"
             rel="noopener noreferrer"
             aria-label="Besök Elhjälp på Facebook"
             className="flex items-center justify-center w-10 h-10 rounded-full border border-border-subtle hover:border-border-medium transition-all duration-200 text-text-dim hover:text-foreground"
           >
             <Facebook width={18} height={18} />
           </a>
-          
-          <a 
-            href={FOOTER_LINKS.socials.instagram.href} 
-            target="_blank" 
+
+          <a
+            href={socials?.instagram}
+            target="_blank"
             rel="noopener noreferrer"
             aria-label="Besök Elhjälp på Instagram"
             className="flex items-center justify-center w-10 h-10 rounded-full border border-border-subtle hover:border-border-medium transition-all duration-200 text-text-dim hover:text-foreground"
@@ -41,12 +40,13 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-3 pt-10 gap-y-9 text-center text-sm font-light">
           <div className="flex flex-col space-y-3 md:text-left">
             <h4 className="text-text-dim">
-              {FOOTER_LINKS.company.title}
+              Företag
             </h4>
             <div className="text-sm text-foreground/70 space-y-1">
-              {FOOTER_LINKS.company.details.map((detail) => (
-                <p key={detail}>{detail}</p>
-              ))}
+              {companyDetails?.address && <p>{companyDetails.address}</p>}
+              {companyDetails?.orgNumber && (
+                <p>Org.nr: {companyDetails.orgNumber}</p>
+              )}
             </div>
           </div>
 
@@ -58,18 +58,25 @@ export default function Footer() {
 
           <div className="flex flex-col space-y-3 md:items-end md:text-right order-2 md:order-3">
             <h4 className="text-text-dim">
-              {FOOTER_LINKS.contact.title}
+              Kontakt
             </h4>
             <div className="flex flex-col text-foreground/70 space-y-1">
-              {FOOTER_LINKS.contact.links.map((link) => (
+              {contactInfo?.phone && (
                 <a
-                  key={link.href}
-                  href={link.href}
+                  href={`tel:${contactInfo.phone.replace(/\s+/g, "")}`}
                   className="hover:text-foreground transition-colors"
                 >
-                  {link.label}
+                  {contactInfo.phone}
                 </a>
-              ))}
+              )}
+              {contactInfo?.email && (
+                <a
+                  href={`mailto:${contactInfo.email}`}
+                  className="hover:text-foreground transition-colors"
+                >
+                  {contactInfo.email}
+                </a>
+              )}
             </div>
           </div>
         </div>

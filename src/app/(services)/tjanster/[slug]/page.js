@@ -1,44 +1,53 @@
-import { SERVICES } from "@/lib/services";
 import { notFound } from "next/navigation";
 import ServiceCard from "@/components/ui/ServiceCard";
 import Link from "next/link";
-import { ArrowUpLeft, ArrowRight } from "iconoir-react";
+import { ArrowUpLeft } from "iconoir-react";
+import { PortableText } from "@portabletext/react";
+import { client } from "@/sanity/lib/client";
+import {
+  SERVICES_INDEX_QUERY,
+  SERVICE_BY_SLUG_QUERY,
+  RELATED_SERVICES_QUERY,
+} from "@/sanity/lib/queries";
 
 export async function generateMetadata({ params }) {
   const { slug } = await params;
-  const service = SERVICES.find((s) => s.slug === slug);
+  const service = await client.fetch(SERVICE_BY_SLUG_QUERY, { slug });
 
   if (!service) return { title: "Tjänst hittades inte" };
 
   return {
     title: `${service.title} | Elhjälp`,
-    description: service.seoDescription,
+    description: service.seo?.metaDescription ?? service.description,
   };
 }
 
 export async function generateStaticParams() {
-  return SERVICES.map((service) => ({
+  const services = (await client.fetch(SERVICES_INDEX_QUERY)) ?? [];
+  return services.map((service) => ({
     slug: service.slug,
   }));
 }
 
 export default async function ServicePage({ params }) {
   const { slug } = await params;
-  const service = SERVICES.find((s) => s.slug === slug);
+  const service = await client.fetch(SERVICE_BY_SLUG_QUERY, { slug });
   if (!service) notFound();
 
-  const relatedServices = SERVICES.filter(
-    (s) => s.category === service.category && s.slug !== slug,
-  ).slice(0, 2);
+  const relatedServices =
+    (await client.fetch(RELATED_SERVICES_QUERY, {
+      slug,
+      category: service.category,
+    })) ?? [];
 
   return (
     <main className="mt-24 px-6 md:px-12 py-24 md:py-32 max-w-7xl mx-auto">
       <h1 className="text-4xl font-light leading-[1.2]">{service.title}</h1>
 
       <div className="w-fit max-w-2xl mt-8">
-        <p className="text-muted-text text-base md:text-lg font-light leading-relaxed max-w-2xl">
-          {service.content}
-        </p>
+        <div className="text-muted-text text-base md:text-lg font-light leading-relaxed max-w-2xl space-y-4">
+          <PortableText value={service.content ?? []} />
+        </div>
       </div>
 
       <div className="mt-24">

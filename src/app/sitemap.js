@@ -1,7 +1,9 @@
-import { SERVICES } from "@/lib/services";
+import { client } from "@/sanity/lib/client";
+import { SERVICES_INDEX_QUERY } from "@/sanity/lib/queries";
 
 export default async function sitemap() {
   const baseUrl = process.env.NEXT_PUBLIC_SITE_URL;
+  const services = (await client.fetch(SERVICES_INDEX_QUERY)) ?? [];
 
   // Static core pages
   const staticPages = [
@@ -16,8 +18,8 @@ export default async function sitemap() {
     priority: route === "" ? 1.0 : 0.8,
   }));
 
-  // Dynamic service routes using your static SERVICES array
-  const servicePages = SERVICES.map((service) => ({
+  // Dynamic service routes fetched live from Sanity
+  const servicePages = services.map((service) => ({
     url: `${baseUrl}/tjanster/${service.slug}`,
     lastModified: new Date().toISOString().split('T')[0],
     changeFrequency: "monthly",

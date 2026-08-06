@@ -1,7 +1,9 @@
-import { SERVICES } from "@/lib/services";
 import ServiceCard from "@/components/ui/ServiceCard";
+import { client } from "@/sanity/lib/client";
+import { SERVICES_INDEX_QUERY } from "@/sanity/lib/queries";
 
-export default function ServicesPage() {
+export default async function ServicesPage() {
+  const services = (await client.fetch(SERVICES_INDEX_QUERY)) ?? [];
 
   return (
     <main className="mt-24 px-6 md:px-12 py-24 md:py-32 max-w-7xl mx-auto">
@@ -12,7 +14,7 @@ export default function ServicesPage() {
       </p>
 
       <div className="mt-32 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        {SERVICES.map((service) => (
+        {services.map((service) => (
           <ServiceCard key={service.slug} {...service} />
         ))}
       </div>

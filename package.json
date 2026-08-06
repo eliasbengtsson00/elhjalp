@@ -10,13 +10,19 @@
   },
   "dependencies": {
     "@next/third-parties": "^16.2.1",
+    "@portabletext/react": "^7.0.1",
+    "@sanity/image-url": "^2.1.1",
+    "@sanity/vision": "^5.31.1",
     "framer-motion": "^12.38.0",
     "iconoir": "^7.11.0",
     "iconoir-react": "^7.11.0",
     "next": "^16.2.1",
+    "next-sanity": "^13.3.1",
     "react": "19.2.3",
     "react-dom": "19.2.3",
     "resend": "^6.9.1",
+    "sanity": "^5.31.1",
+    "styled-components": "^6.5.0",
     "zod": "^3.24.2"
   },
   "devDependencies": {

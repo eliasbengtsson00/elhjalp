@@ -2,9 +2,8 @@
 import Link from "next/link";
 import { NAV_LINKS } from "./Navbar";
 import { Facebook, Instagram } from "iconoir-react";
-import { FOOTER_LINKS } from "@/lib/site";
 
-export default function MobileMenu({ isOpen, toggleMenu }) {
+export default function MobileMenu({ isOpen, toggleMenu, socials }) {
   return (
     <div
       className={`fixed inset-0 z-40 bg-background/95 backdrop-blur-2xl transition-all duration-500 ease-in-out lg:hidden ${
@@ -34,7 +33,7 @@ export default function MobileMenu({ isOpen, toggleMenu }) {
         {/* Socials */}
         <div className="pt-12 flex justify-center items-center gap-4">
           <a
-            href={FOOTER_LINKS.socials.facebook.href}
+            href={socials?.facebook}
             target="_blank"
             rel="noopener noreferrer"
             className="flex items-center justify-center w-10 h-10 rounded-full border border-border-subtle hover:border-border-medium transition-all duration-200 text-text-dim hover:text-foreground"
@@ -43,7 +42,7 @@ export default function MobileMenu({ isOpen, toggleMenu }) {
           </a>
 
           <a
-            href={FOOTER_LINKS.socials.instagram.href}
+            href={socials?.instagram}
             target="_blank"
             rel="noopener noreferrer"
             className="flex items-center justify-center w-10 h-10 rounded-full border border-border-subtle hover:border-border-medium transition-all duration-200 text-text-dim hover:text-foreground"

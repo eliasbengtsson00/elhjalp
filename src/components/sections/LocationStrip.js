@@ -2,26 +2,9 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 
-export default function LocationStrip() {
+export default function LocationStrip({ areas: areasProp }) {
+  const areas = areasProp ?? [];
   const [isOpen, setIsOpen] = useState(false);
-
-  const areas = [
-    "Borås",
-    "Göteborg",
-    "Alingsås",
-    "Ulricehamn",
-    "Lerum",
-    "Partille",
-    "Landvetter",
-    "Härryda",
-    "Kinna",
-    "Skene",
-    "Vårgårda",
-    "Herrljunga",
-    "Bollebygd",
-    "Tranemo",
-    "Svenljunga",
-  ];
 
   // Den visuella listan (för animationerna)
   const visibleAreas = isOpen ? areas : areas.slice(0, 4);

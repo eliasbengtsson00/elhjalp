@@ -1,16 +1,15 @@
 import ServiceCard from "@/components/ui/ServiceCard";
-import { SERVICES } from "@/lib/services";
 import Link from "next/link";
 
-export default function ServicesGrid() {
-  const homeServices = SERVICES.slice(0, 3);
+export default function ServicesGrid({ services }) {
+  const safeServices = services ?? [];
 
   return (
     <section id="services" className="py-24 md:py-32">
       <div className="max-w-7xl mx-auto px-6 md:px-12">
         {/* Grid - 3 cards */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {homeServices.map((service) => (
+          {safeServices.map((service) => (
             <ServiceCard key={service.slug} {...service} />
           ))}
         </div>

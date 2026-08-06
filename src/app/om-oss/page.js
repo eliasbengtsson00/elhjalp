@@ -1,16 +1,19 @@
-export default function AboutPage() {
+import { PortableText } from "@portabletext/react";
+import { client } from "@/sanity/lib/client";
+import { ABOUT_PAGE_QUERY } from "@/sanity/lib/queries";
+
+export default async function AboutPage() {
+  const aboutPage = await client.fetch(ABOUT_PAGE_QUERY);
+  const { heading, body } = aboutPage ?? {};
+
   return (
     <main className="mt-24 px-6 md:px-12 py-24 md:py-32 max-w-7xl mx-auto">
       {/* 1. Header Section */}
       <section className="">
-        <h1 className="text-4xl font-light leading-[1.2]">Om oss</h1>
-        <p className="mt-8 text-zinc-400 text-base md:text-lg font-light leading-relaxed max-w-2xl">
-          <span className="text-white">Elhjälp Sverige AB</span> grundades 2022 med målet att vara ett elföretag som
-          håller vad vi lovar och alltid levererar säkra, kvalitativa och
-          professionellt utförda arbeten. Med fokus på service, noggrannhet och
-          kundnöjdhet strävar vi efter att skapa långsiktiga relationer och
-          trygga lösningar för både privatpersoner och företag.
-        </p>
+        <h1 className="text-4xl font-light leading-[1.2]">{heading}</h1>
+        <div className="mt-8 text-zinc-400 text-base md:text-lg font-light leading-relaxed max-w-2xl space-y-4">
+          <PortableText value={body ?? []} />
+        </div>
       </section>
     </main>
   );

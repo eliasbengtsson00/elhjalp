@@ -9,7 +9,7 @@ export const NAV_LINKS = [
   { name: "Om oss", href: "/om-oss" },
 ];
 
-export default function Navbar() {
+export default function Navbar({ socials }) {
   const [isOpen, setIsOpen] = useState(false);
 
   useEffect(() => {
@@ -66,7 +66,7 @@ export default function Navbar() {
         </button>
       </nav>
 
-      <MobileMenu isOpen={isOpen} toggleMenu={toggleMenu} />
+      <MobileMenu isOpen={isOpen} toggleMenu={toggleMenu} socials={socials} />
     </header>
   );
 }

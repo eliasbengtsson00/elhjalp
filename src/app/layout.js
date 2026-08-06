@@ -4,6 +4,8 @@ import Script from "next/script"; // <-- Replaced GoogleTagManager with native S
 import Theme from "@/components/providers/Theme";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
+import { client } from "@/sanity/lib/client";
+import { SITE_SETTINGS_QUERY } from "@/sanity/lib/queries";
 
 const zalando = Zalando_Sans_Expanded({
   subsets: ["latin"],
@@ -39,7 +41,23 @@ export const viewport = {
   ],
 };
 
-export default function RootLayout({ children }) {
+const capitalize = (word) => word.charAt(0).toUpperCase() + word.slice(1);
+
+export default async function RootLayout({ children }) {
+  const siteSettings = await client.fetch(SITE_SETTINGS_QUERY);
+  const { companyDetails, contactInfo, socialLinks, openingHours, geo } =
+    siteSettings ?? {};
+
+  const socials = Object.fromEntries(
+    (socialLinks ?? []).map((link) => [link.platform, link.url])
+  );
+
+  // "Vinkelvägen 8, 518 41 Sjömarken" -> streetAddress / postalCode / addressLocality
+  const [streetAddress, localityPart] = (companyDetails?.address ?? "")
+    .split(",")
+    .map((part) => part.trim());
+  const localityMatch = localityPart?.match(/^(\d{3}\s?\d{2})\s+(.+)$/);
+
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "Electrician",
@@ -47,20 +65,20 @@ export default function RootLayout({ children }) {
     url: SITE_URL,
     logo: `${SITE_URL}/logo.svg`,
     image: `${SITE_URL}/logo.svg`,
-    telephone: "+46723071194",
-    email: "philip@elhjalp.com",
-    taxID: "559366-5929",
+    telephone: contactInfo?.phone,
+    email: contactInfo?.email,
+    taxID: companyDetails?.orgNumber,
     address: {
       "@type": "PostalAddress",
-      streetAddress: "Vinkelvägen 8",
-      postalCode: "518 41",
-      addressLocality: "Sjömarken",
+      streetAddress,
+      postalCode: localityMatch?.[1],
+      addressLocality: localityMatch?.[2] ?? localityPart,
       addressCountry: "SE",
     },
     geo: {
       "@type": "GeoCoordinates",
-      latitude: "57.7153136",
-      longitude: "12.823011",
+      latitude: geo?.lat,
+      longitude: geo?.lng,
     },
     areaServed: [
       {
@@ -72,24 +90,13 @@ export default function RootLayout({ children }) {
         name: "Sjuhärad",
       },
     ],
-    openingHoursSpecification: [
-      {
-        "@type": "OpeningHoursSpecification",
-        dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
-        opens: "09:00",
-        closes: "18:00",
-      },
-      {
-        "@type": "OpeningHoursSpecification",
-        dayOfWeek: ["Saturday", "Sunday"],
-        opens: "10:00",
-        closes: "16:00",
-      },
-    ],
-    sameAs: [
-      "https://www.facebook.com/profile.php?id=61569419582779",
-      "https://www.instagram.com/elhjalpab/",
-    ],
+    openingHoursSpecification: (openingHours ?? []).map((spec) => ({
+      "@type": "OpeningHoursSpecification",
+      dayOfWeek: (spec.days ?? []).map(capitalize),
+      opens: spec.opens,
+      closes: spec.closes,
+    })),
+    sameAs: (socialLinks ?? []).map((link) => link.url),
     description:
       "Professionella elinstallationer, felsökning och service för privatpersoner och företag i Borås med omnejd.",
   };
@@ -123,9 +130,13 @@ export default function RootLayout({ children }) {
       </head>
       <body className="antialiased font-sans">
         <Theme>
-          <Navbar />
+          <Navbar socials={socials} />
           <main className="flex-grow">{children}</main>
-          <Footer />
+          <Footer
+            companyDetails={companyDetails}
+            contactInfo={contactInfo}
+            socials={socials}
+          />
         </Theme>
       </body>
     </html>
