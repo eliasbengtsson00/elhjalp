@@ -49,6 +49,7 @@ export const SERVICE_BY_SLUG_QUERY = `*[_type == "service" && slug.current == $s
   title,
   category,
   content,
+  mainImage,
   seo{
     metaDescription
   }
@@ -58,4 +59,13 @@ export const RELATED_SERVICES_QUERY = `*[_type == "service" && category == $cate
   title,
   "slug": slug.current,
   description
+}`
+
+// Single round trip for sitemap.js: just the _updatedAt each route needs
+// for an accurate lastModified, not the full page content.
+export const SITEMAP_QUERY = `{
+  "homePage": *[_type == "homePage"][0]{ _updatedAt },
+  "aboutPage": *[_type == "aboutPage"][0]{ _updatedAt },
+  "contactPage": *[_type == "contactPage"][0]{ _updatedAt },
+  "services": *[_type == "service"]{ "slug": slug.current, _updatedAt }
 }`

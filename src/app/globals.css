@@ -10,6 +10,8 @@
   --color-muted-text: var(--txt-muted);
   --color-surface: var(--surface);
   --color-surface-hover: var(--surface-hover);
+  --color-accent: var(--accent);
+  --color-accent-subtle: var(--accent-subtle);
 }
 
 html {
@@ -25,6 +27,8 @@ html {
   --txt-muted: #d4d4d8;
   --surface: #18181b;
   --surface-hover: #27272a;
+  --accent: #10b981;
+  --accent-subtle: #14532d;
 }
 
 @layer base {

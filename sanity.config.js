@@ -7,11 +7,13 @@
 import {visionTool} from '@sanity/vision'
 import {defineConfig} from 'sanity'
 import {structureTool} from 'sanity/structure'
+import {presentationTool} from 'sanity/presentation'
 
 // Go to https://www.sanity.io/docs/api-versioning to learn how API versioning works
 import {apiVersion, dataset, projectId} from './src/sanity/env'
 import {schema} from './src/sanity/schemaTypes'
 import {singletonIds, structure} from './src/sanity/structure'
+import {locations} from './src/sanity/resolve'
 
 export default defineConfig({
   basePath: '/studio',
@@ -21,6 +23,20 @@ export default defineConfig({
   schema,
   plugins: [
     structureTool({structure}),
+    // Split-screen draft preview: resolves which frontend route each
+    // document maps to, and enables Next.js draft mode via the API route
+    // when an editor opens a document in Presentation.
+    presentationTool({
+      previewUrl: {
+        initial: '/',
+        previewMode: {
+          enable: '/api/draft-mode/enable',
+        },
+      },
+      resolve: {
+        locations,
+      },
+    }),
     // Vision is for querying with GROQ from inside the Studio
     // https://www.sanity.io/docs/the-vision-plugin
     visionTool({defaultApiVersion: apiVersion}),

@@ -1,12 +1,15 @@
-import ContactForm from "@/components/forms/ContactForm";
+import ContactCard from "@/components/ContactCard";
 import { Phone, Mail } from "iconoir-react";
 import Image from "next/image";
-import { client } from "@/sanity/lib/client";
+import { sanityFetch } from "@/sanity/lib/live";
 import { CONTACT_PAGE_QUERY } from "@/sanity/lib/queries";
+import { getSiteSettings } from "@/sanity/lib/siteSettings";
 import { urlFor } from "@/sanity/lib/image";
 
 export default async function KontaktPage() {
-  const contactPage = await client.fetch(CONTACT_PAGE_QUERY);
+  const { data: contactPage } = await sanityFetch({ query: CONTACT_PAGE_QUERY });
+  const siteSettings = await getSiteSettings();
+  const phone = siteSettings?.contactInfo?.phone;
   const { heading, intro, teamSectionHeading, teamMembers } =
     contactPage ?? {};
   const members = teamMembers ?? [];
@@ -23,26 +26,23 @@ export default async function KontaktPage() {
               {intro}
             </p>
           </div>
-          <div className="mt-20">
-            <a
-              href="tel:+46723071194"
-              className="group flex items-center gap-4 border border-green-900 text-white px-7 py-4 rounded-full transition-all duration-200 hover:scale-105 active:scale-95 w-fit"
-            >
-              <Phone width={20} height={20} strokeWidth={1} />
-              <span className="text-sm font-light">Ring direkt</span>
-            </a>
-          </div>
+          {phone && (
+            <div className="mt-20">
+              <a
+                href={`tel:${phone.replace(/\s+/g, "")}`}
+                className="group flex items-center gap-4 border border-accent-subtle text-foreground px-7 py-4 rounded-full transition-all duration-200 hover:scale-105 active:scale-95 w-fit"
+              >
+                <Phone width={20} height={20} strokeWidth={1} />
+                <span className="text-sm font-light">Ring direkt</span>
+              </a>
+            </div>
+          )}
         </div>
 
-        <div className="bg-zinc-900/30 border border-zinc-800/50 rounded-4xl p-8 md:p-12">
-          <h3 className="mb-8 font-light text-muted-text text-base">
-            Kontakta oss
-          </h3>
-          <ContactForm />
-        </div>
+        <ContactCard />
       </div>
 
-      <h2 className="mt-24 mb-8 text-lg md:text-xl font-light text-white leading-relaxed">
+      <h2 className="mt-24 mb-8 text-lg md:text-xl font-light text-foreground leading-relaxed">
         {teamSectionHeading}
       </h2>
 
@@ -50,7 +50,7 @@ export default async function KontaktPage() {
         {members.map((member) => (
           <div
             key={member.email ?? member.name}
-            className="bg-zinc-900/20 border border-zinc-800/50 rounded-3xl p-8 flex flex-col gap-8 max-w-md w-full"
+            className="bg-surface/20 border border-surface-hover/50 rounded-3xl p-8 flex flex-col gap-8 max-w-md w-full"
           >
             <div className="flex items-center gap-5">
               <div className="w-20 h-20 rounded-full overflow-hidden relative shrink-0">
@@ -65,10 +65,10 @@ export default async function KontaktPage() {
                 )}
               </div>
               <div className="flex flex-col">
-                <p className="text-sm font-light text-zinc-500 mb-0.5">
+                <p className="text-sm font-light text-text-dim mb-0.5">
                   {member.role}
                 </p>
-                <p className="text-xl font-light text-white">{member.name}</p>
+                <p className="text-xl font-light text-foreground">{member.name}</p>
               </div>
             </div>
 
@@ -76,16 +76,16 @@ export default async function KontaktPage() {
               {member.phone && (
                 <div className="flex items-center gap-6 group">
                   <Phone
-                    className="w-5 h-5 text-zinc-500 shrink-0"
+                    className="w-5 h-5 text-text-dim shrink-0"
                     strokeWidth={1}
                   />
                   <div>
-                    <p className="text-sm font-light text-zinc-500 mb-0.5">
+                    <p className="text-sm font-light text-text-dim mb-0.5">
                       Telefon
                     </p>
                     <a
                       href={`tel:${member.phone.replace(/\s+/g, "")}`}
-                      className="block text-base font-light text-white hover:text-zinc-300 transition-colors"
+                      className="block text-base font-light text-foreground hover:text-muted-text transition-colors"
                     >
                       {member.phone}
                     </a>
@@ -96,16 +96,16 @@ export default async function KontaktPage() {
               {member.email && (
                 <div className="flex items-center gap-6 group">
                   <Mail
-                    className="w-5 h-5 text-zinc-500 shrink-0"
+                    className="w-5 h-5 text-text-dim shrink-0"
                     strokeWidth={1}
                   />
                   <div>
-                    <p className="text-sm font-light text-zinc-500 mb-0.5">
+                    <p className="text-sm font-light text-text-dim mb-0.5">
                       E-post
                     </p>
                     <a
                       href={`mailto:${member.email}`}
-                      className="block text-base font-light text-white hover:text-zinc-300 transition-colors"
+                      className="block text-base font-light text-foreground hover:text-muted-text transition-colors"
                     >
                       {member.email}
                     </a>

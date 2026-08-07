@@ -27,24 +27,24 @@ export default function Faq({ items: itemsProp }) {
       />
       
       <div className="max-w-7xl mx-auto md:px-12 px-6">
-        <h2 className="text-lg md:text-xl font-light text-white leading-relaxed">
+        <h2 className="text-lg md:text-xl font-light text-foreground leading-relaxed">
           Vanliga frågor
         </h2>
-        
+
         <div>
           {items.map((item, i) => (
             <div key={i} className="overflow-hidden">
               <button
                 onClick={() => setOpenIndex(openIndex === i ? null : i)}
-                className="w-full gap-x-4 py-8 flex justify-between items-center text-left text-muted-text hover:text-white transition-colors duration-200 group cursor-pointer outline-none"
+                className="w-full gap-x-4 py-8 flex justify-between items-center text-left text-muted-text hover:text-foreground transition-colors duration-200 group cursor-pointer outline-none"
               >
                 <span className="text-base font-light">
                   {item.question}
                 </span>
                 {openIndex === i ? (
-                  <Minus className="w-6 h-6 text-muted-text group-hover:text-white" />
+                  <Minus className="w-6 h-6 text-muted-text group-hover:text-foreground" />
                 ) : (
-                  <Plus className="w-6 h-6 text-muted-text group-hover:text-white" />
+                  <Plus className="w-6 h-6 text-muted-text group-hover:text-foreground" />
                 )}
               </button>
 
@@ -54,7 +54,7 @@ export default function Faq({ items: itemsProp }) {
                 }`}
               >
                 <div className="overflow-hidden">
-                  <p className="text-base font-light text-zinc-500 max-w-2xl">
+                  <p className="text-base font-light text-text-dim max-w-2xl">
                     {item.answer}
                   </p>
                 </div>

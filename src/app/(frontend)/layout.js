@@ -1,9 +1,10 @@
+import { draftMode } from "next/headers";
 import Script from "next/script"; // <-- Replaced GoogleTagManager with native Script
-import Theme from "@/components/providers/Theme";
+import { VisualEditing } from "next-sanity/visual-editing";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
-import { client } from "@/sanity/lib/client";
-import { SITE_SETTINGS_QUERY } from "@/sanity/lib/queries";
+import { SanityLive } from "@/sanity/lib/live";
+import { getSiteSettings } from "@/sanity/lib/siteSettings";
 
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL;
 
@@ -34,7 +35,8 @@ export const viewport = {
 const capitalize = (word) => word.charAt(0).toUpperCase() + word.slice(1);
 
 export default async function FrontendLayout({ children }) {
-  const siteSettings = await client.fetch(SITE_SETTINGS_QUERY);
+  const { isEnabled: isDraftMode } = await draftMode();
+  const siteSettings = await getSiteSettings();
   const { companyDetails, contactInfo, socialLinks, openingHours, geo } =
     siteSettings ?? {};
 
@@ -92,7 +94,7 @@ export default async function FrontendLayout({ children }) {
   };
 
   return (
-    <Theme>
+    <div className="relative min-h-screen flex flex-col">
       {/* Swapped to Next.js Script with lazyOnload */}
       <Script
         id="gtm-script"
@@ -118,6 +120,8 @@ export default async function FrontendLayout({ children }) {
         contactInfo={contactInfo}
         socials={socials}
       />
-    </Theme>
+      <SanityLive />
+      {isDraftMode && <VisualEditing />}
+    </div>
   );
 }

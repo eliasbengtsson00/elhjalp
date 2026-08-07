@@ -5,11 +5,13 @@ import Faq from "@/components/sections/Faq";
 import SeoText from "@/components/sections/SeoText";
 import TrustRegistration from "@/components/sections/TrustRegistration";
 import ContactSection from "@/components/sections/ContactSection";
-import { client } from "@/sanity/lib/client";
+import { sanityFetch } from "@/sanity/lib/live";
 import { HOME_PAGE_QUERY } from "@/sanity/lib/queries";
+import { getSiteSettings } from "@/sanity/lib/siteSettings";
 
 export default async function Home() {
-  const homePage = await client.fetch(HOME_PAGE_QUERY);
+  const { data: homePage } = await sanityFetch({ query: HOME_PAGE_QUERY });
+  const siteSettings = await getSiteSettings();
   const {
     heroSection,
     faqItems,
@@ -32,7 +34,11 @@ export default async function Home() {
       <ServicesGrid services={featuredServices} />
       <Faq items={faqItems} />
       <LocationStrip areas={serviceAreas} />
-      <ContactSection heading={contactHeading} copy={contactCopy} />
+      <ContactSection
+        heading={contactHeading}
+        copy={contactCopy}
+        phone={siteSettings?.contactInfo?.phone}
+      />
       <SeoText value={seoText} />
     </>
   );

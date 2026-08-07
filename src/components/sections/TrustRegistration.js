@@ -9,12 +9,12 @@ export default function TrustRegistration() {
         
         {/* Text */}
         <div className="flex-1 flex flex-col items-center text-center">
-          <div className="mb-6 text-emerald-500/80">
+          <div className="mb-6 text-accent/80">
             <BadgeCheck height={38} width={38} strokeWidth={1} />
           </div>
 
           <p className="text-muted-text text-lg md:text-xl font-light leading-relaxed max-w-md">
-            Elhjälp Sverige AB är registrerat hos <span className="text-white">Elsäkerhetsverket</span>.
+            Elhjälp Sverige AB är registrerat hos <span className="text-foreground">Elsäkerhetsverket</span>.
           </p>
 
         </div>
@@ -30,7 +30,7 @@ export default function TrustRegistration() {
             rel="noopener noreferrer"
             className="group block"
           >
-            <div className="relative bg-white px-7 py-3 rounded-full transition-all duration-200 ease-in-out hover:scale-105 active:scale-95 shadow-lg shadow-black/20">
+            <div className="relative bg-foreground px-7 py-3 rounded-full transition-all duration-200 ease-in-out hover:scale-105 active:scale-95 shadow-lg shadow-black/20">
               <Image
                 src="/kollaelforetaget.png"
                 alt="Kolla elföretaget"

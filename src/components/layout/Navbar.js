@@ -32,7 +32,6 @@ export default function Navbar({ socials }) {
             alt="Logo"
             width={130}
             height={32}
-            className="invert transition-all duration-500"
             priority
           />
         </Link>

@@ -1,9 +1,9 @@
 import { PortableText } from "@portabletext/react";
-import { client } from "@/sanity/lib/client";
+import { sanityFetch } from "@/sanity/lib/live";
 import { ABOUT_PAGE_QUERY } from "@/sanity/lib/queries";
 
 export default async function AboutPage() {
-  const aboutPage = await client.fetch(ABOUT_PAGE_QUERY);
+  const { data: aboutPage } = await sanityFetch({ query: ABOUT_PAGE_QUERY });
   const { heading, body } = aboutPage ?? {};
 
   return (
@@ -11,7 +11,7 @@ export default async function AboutPage() {
       {/* 1. Header Section */}
       <section className="">
         <h1 className="text-4xl font-light leading-[1.2]">{heading}</h1>
-        <div className="mt-8 text-zinc-400 text-base md:text-lg font-light leading-relaxed max-w-2xl space-y-4">
+        <div className="mt-8 text-text-dim text-base md:text-lg font-light leading-relaxed max-w-2xl space-y-4">
           <PortableText value={body ?? []} />
         </div>
       </section>

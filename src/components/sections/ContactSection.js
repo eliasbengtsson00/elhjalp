@@ -1,7 +1,7 @@
 import { Phone } from "iconoir-react";
-import ContactForm from "@/components/forms/ContactForm";
+import ContactCard from "@/components/ContactCard";
 
-export default function ContactSection({ heading, copy }) {
+export default function ContactSection({ heading, copy, phone }) {
   return (
     <section id="contact" className="px-6 md:px-12 py-24 md:py-32 max-w-7xl mx-auto">
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-start">
@@ -12,28 +12,24 @@ export default function ContactSection({ heading, copy }) {
             {copy}
           </p>
 
-          <div className="mt-20 flex flex-col gap-6">
-            <span className="text-white text-base md:text-lg font-light leading-relaxed">
-              Behöver du akut hjälp?
-            </span>
-            <a
-              href="tel:+46723071194"
-              className="
-              group flex items-center gap-4 border border-green-900 text-white px-7 py-4 rounded-full transition-all duration-200 hover:scale-105 active:scale-95 w-fit"
-            >
-              <Phone width={20} height={20} strokeWidth={1} />
-              <span className="text-sm font-light">Ring direkt</span>
-            </a>
-          </div>
+          {phone && (
+            <div className="mt-20 flex flex-col gap-6">
+              <span className="text-foreground text-base md:text-lg font-light leading-relaxed">
+                Behöver du akut hjälp?
+              </span>
+              <a
+                href={`tel:${phone.replace(/\s+/g, "")}`}
+                className="group flex items-center gap-4 border border-accent-subtle text-foreground px-7 py-4 rounded-full transition-all duration-200 hover:scale-105 active:scale-95 w-fit"
+              >
+                <Phone width={20} height={20} strokeWidth={1} />
+                <span className="text-sm font-light">Ring direkt</span>
+              </a>
+            </div>
+          )}
         </div>
 
         {/* Right */}
-        <div className="bg-zinc-900/30 border border-zinc-800/50 rounded-4xl p-8 md:p-12">
-          <h3 className="mb-8 font-light text-muted-text text-base">
-            Kontakta oss
-          </h3>
-          <ContactForm />
-        </div>
+        <ContactCard />
       </div>
     </section>
   );

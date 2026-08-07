@@ -6,5 +6,8 @@ export const client = createClient({
   projectId,
   dataset,
   apiVersion,
-  useCdn: true, // Set to false if statically generating pages, using ISR or tag-based revalidation
+  useCdn: false, // Disabled: revalidation is handled via next-sanity/live + the webhook, so we read straight from the API
+  stega: {
+    studioUrl: '/studio',
+  },
 })

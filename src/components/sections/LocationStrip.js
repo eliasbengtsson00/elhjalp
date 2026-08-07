@@ -14,7 +14,7 @@ export default function LocationStrip({ areas: areasProp }) {
       <div className="max-w-7xl mx-auto md:px-12 px-6">
 
         {/* Samma diskreta rubrik som FAQ */}
-        <h2 className="text-lg md:text-xl font-light leading-relaxed text-white mb-8">
+        <h2 className="text-lg md:text-xl font-light leading-relaxed text-foreground mb-8">
           Verksamma områden
         </h2>
 
@@ -37,7 +37,7 @@ export default function LocationStrip({ areas: areasProp }) {
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.2 }}
               key={area}
-              className="px-5 py-2.5 rounded-full border border-zinc-800/80 bg-zinc-900/30 text-base font-light text-zinc-400 cursor-default"
+              className="px-5 py-2.5 rounded-full border border-surface-hover/80 bg-surface/30 text-base font-light text-text-dim cursor-default"
             >
               {area}
             </motion.span>
@@ -48,7 +48,7 @@ export default function LocationStrip({ areas: areasProp }) {
             <motion.button
               layout
               onClick={() => setIsOpen(true)}
-              className="px-5 py-2.5 rounded-full border border-dashed border-zinc-700 text-base font-light text-zinc-400 hover:text-white hover:border-zinc-500 transition-colors duration-200 outline-none cursor-pointer"
+              className="px-5 py-2.5 rounded-full border border-dashed border-border-medium text-base font-light text-text-dim hover:text-foreground hover:border-text-dim transition-colors duration-200 outline-none cursor-pointer"
             >
               + {areas.length - 4} fler orter
             </motion.button>
@@ -58,7 +58,7 @@ export default function LocationStrip({ areas: areasProp }) {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               onClick={() => setIsOpen(false)}
-              className="px-5 py-2.5 rounded-full border border-zinc-700 text-white bg-zinc-800 hover:bg-zinc-700 text-base font-light transition-colors duration-200 outline-none cursor-pointer"
+              className="px-5 py-2.5 rounded-full border border-border-medium text-foreground bg-surface-hover hover:bg-border-medium text-base font-light transition-colors duration-200 outline-none cursor-pointer"
             >
               Dölj områden
             </motion.button>

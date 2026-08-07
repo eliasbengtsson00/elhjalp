@@ -1,13 +1,7 @@
-"use client";
-import { useState, useEffect } from "react";
 import { Facebook, Instagram } from "iconoir-react";
 
 export default function Footer({ companyDetails, contactInfo, socials }) {
-  const [year, setYear] = useState(2026);
-
-  useEffect(() => {
-    setYear(new Date().getFullYear());
-  }, []);
+  const year = new Date().getFullYear();
 
   return (
     <footer className="pb-12 md:px-12 transition-colors duration-200">
